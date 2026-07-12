@@ -1,0 +1,33 @@
+input_dir: outputs/fiper_rollout_recording/smolvla_libero10_all_tasks_5eps/libero_10
+output_dir: outputs/fiper_rollout_scoring/smolvla_libero10_all_tasks_5eps/libero_10
+allow_existing_output_dir: true
+
+env:
+  type: libero
+  task: libero_10
+  task_ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+dataset:
+  repo_id: HuggingFaceVLA/libero
+  libero_tasks:
+    libero_spatial: []
+    libero_object: []
+    libero_goal: []
+    libero_10: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+fiper_rollout_scorer:
+  scores_by_method:
+    bayesian_laplace: []
+    bayesian_ensemble: [vfd_oneway, vfd]
+    composed: []
+    composed_bayesian_laplace: []
+    composed_bayesian_ensemble: []
+  ensemble_model_paths:
+    - outputs/iterative_fine_tuning/uniform_leak3fixed_weighted_pools_lr_schedule_history05_steps2000_s01/round_015/training/member_00/checkpoints/last/pretrained_model
+    - outputs/iterative_fine_tuning/uniform_leak3fixed_weighted_pools_lr_schedule_history05_steps2000_s01/round_015/training/member_01/checkpoints/last/pretrained_model
+  sampler_ensemble_member_index: 0
+  terminal_vel_eval_times: [0.0]
+
+seed: 20118
+job_name: smolvla_libero10_all_tasks_5eps_scoring
+save_videos: false

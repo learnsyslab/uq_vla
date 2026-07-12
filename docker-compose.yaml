@@ -1,0 +1,25 @@
+services:
+  develop:
+    image: lerobot:latest
+    container_name: lerobot-develop
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,graphics,video,utility
+      - MUJOCO_GL=egl
+      - EGL_PLATFORM=surfaceless
+    working_dir: /lerobot
+    ipc: host
+    stdin_open: true
+    tty: true
+    privileged: true
+    network_mode: host
+    volumes:
+      - ./:/lerobot/
+    command: bash
