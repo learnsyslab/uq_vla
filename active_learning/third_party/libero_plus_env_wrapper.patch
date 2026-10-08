@@ -1,0 +1,90 @@
+diff --git a/libero/libero/envs/env_wrapper.py b/libero/libero/envs/env_wrapper.py
+index be94797..bae8b67 100644
+--- a/libero/libero/envs/env_wrapper.py
++++ b/libero/libero/envs/env_wrapper.py
+@@ -12,6 +12,32 @@ import time
+ from io import BytesIO
+ import cv2
+ import ctypes
++# ImageMagick (wand) is optional here: only motion_blur (noise severities 1-10) uses it. Where libMagickWand is
++# missing the imports below are satisfied by stubs and motion_blur falls back to a
++# numpy/cv2 line-kernel blur with the same (radius, sigma, angle) parametrisation -- the imagecorruptions-package
++# formulation of the same Hendrycks & Dietterich corruption.
++try:
++    import wand.api, wand.image  # noqa: F401
++    _HAVE_WAND = True
++except Exception:  # ImportError, or the shared library is missing
++    import sys as _sys, types as _types
++    _HAVE_WAND = False
++    _api = _types.ModuleType("wand.api"); _api.library = _types.SimpleNamespace(MagickMotionBlurImage=_types.SimpleNamespace())
++    _img = _types.ModuleType("wand.image"); _img.Image = object
++    _sys.modules.setdefault("wand", _types.ModuleType("wand")); _sys.modules["wand.api"] = _api; _sys.modules["wand.image"] = _img
++
++
++def _motion_blur_np(x, radius, sigma, angle):
++    """Line-kernel motion blur (cf. imagecorruptions._motion_blur): a 1-D gaussian of the given radius/sigma
++    laid along `angle`, applied with cv2.filter2D. x: HxWx3 uint8 -> uint8."""
++    width = int(radius * 2 + 1)
++    k = np.arange(width) - radius
++    k = np.exp(-(k ** 2) / (2 * sigma ** 2)); k = k / k.sum()
++    kernel = np.zeros((width, width), dtype=np.float32); kernel[width // 2, :] = k
++    M = cv2.getRotationMatrix2D((width / 2 - 0.5, width / 2 - 0.5), float(angle), 1.0)
++    kernel = cv2.warpAffine(kernel, M, (width, width)); kernel = kernel / max(kernel.sum(), 1e-8)
++    return np.clip(cv2.filter2D(np.asarray(x, dtype=np.float32), -1, kernel), 0, 255).astype(np.uint8)
++
+ from wand.api import library as wandlibrary
+ from wand.image import Image as WandImage
+ from skimage.filters import gaussian
+@@ -42,6 +68,8 @@ def motion_blur(x, severity=1):
+         (30, 15),
+         (35, 20)
+     ][severity - 1]
++    if not _HAVE_WAND:
++        return _motion_blur_np(np.array(x), c[0], c[1], np.random.uniform(-45, 45))
+ 
+     output = BytesIO()
+     x.save(output, format='PNG')
+@@ -162,17 +190,35 @@ def glass_blur(x, severity=1):
+ 
+     height_x, weight_x = x.shape[0], x.shape[1]
+ 
+-    # locally shuffle pixels
+-    for i in range(c[2]):
+-        for h in range(height_x - c[1], c[1], -1):
+-            for w in range(weight_x - c[1], c[1], -1):
+-                dx, dy = np.random.randint(-c[1], c[1], size=(2,))
+-                h_prime, w_prime = h + dy, w + dx
+-                # swap
+-                x[h, w], x[h_prime, w_prime] = x[h_prime, w_prime], x[h, w]
++    # locally shuffle pixels -- numba-compiled (same loop as the original pure-Python version, which took
++    # ~0.5 s per 256x256 frame and made a 520-step episode cost >15 min on a cluster core; imagecorruptions
++    # ships the same jitted formulation).
++    x = _glass_shuffle(np.ascontiguousarray(x), int(c[1]), int(c[2]), height_x, weight_x)
+ 
+     return np.clip(gaussian(x / 255., sigma=c[0], channel_axis=-1), 0, 1) * 255
+ 
++
++try:
++    from numba import njit as _njit
++except Exception:  # pragma: no cover - numba missing: fall back to the slow loop
++    def _njit(*a, **k):
++        return lambda f: f
++
++
++@_njit(cache=True)
++def _glass_shuffle(x, max_delta, iterations, height_x, weight_x):
++    for i in range(iterations):
++        for h in range(height_x - max_delta, max_delta, -1):
++            for w in range(weight_x - max_delta, max_delta, -1):
++                dx = np.random.randint(-max_delta, max_delta)
++                dy = np.random.randint(-max_delta, max_delta)
++                h_prime, w_prime = h + dy, w + dx
++                for ch in range(x.shape[2]):
++                    tmp = x[h, w, ch]
++                    x[h, w, ch] = x[h_prime, w_prime, ch]
++                    x[h_prime, w_prime, ch] = tmp
++    return x
++
+ class ControlEnv:
+     def __init__(
+         self,

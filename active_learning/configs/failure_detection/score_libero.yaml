@@ -1,0 +1,32 @@
+# Scores recorded LIBERO-10 / LIBERO-Plus rollouts with the seed pair's two-member ensemble. Paths are the
+# s01 defaults; scripts/failure_detection/run_libero_plus.sh overrides them per seed pair.
+input_dir: outputs/fiper_rollout_recording/smolvla_libero_s01/libero_10
+output_dir: outputs/fiper_rollout_scoring/smolvla_libero_s01/libero_10
+allow_existing_output_dir: true
+
+env:
+  type: libero
+  task: libero_10
+  task_ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+dataset:
+  repo_id: HuggingFaceVLA/libero
+  libero_tasks:
+    libero_10: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+fiper_rollout_scorer:
+  scores_by_method:
+    bayesian_laplace: []
+    bayesian_ensemble: [inter_vel_diff, inter_vel_diff_2way]
+    composed: []
+    composed_bayesian_laplace: []
+    composed_bayesian_ensemble: []
+  ensemble_model_paths:
+    - outputs/pretrain/smolvla_libero_all40/seed_0/checkpoints/last/pretrained_model
+    - outputs/pretrain/smolvla_libero_all40/seed_1/checkpoints/last/pretrained_model
+  sampler_ensemble_member_index: 0
+  terminal_vel_eval_times: [0.0]
+
+seed: 20118
+job_name: smolvla_libero_scoring
+save_videos: false

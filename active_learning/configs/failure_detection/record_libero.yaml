@@ -1,0 +1,26 @@
+# In-distribution LIBERO-10 rollouts of the SmolVLA ensembles trained on all 40 LIBERO tasks
+# (configs/pretrain/smolvla_libero_all40.yaml), recorded for the LIBERO-Plus failure-detection experiment.
+# Per task: 20 calibration slots, each retried up to 20 times until a success (failed attempts are not
+# saved, so the calibration set holds successes only), and 30 in-distribution test rollouts.
+# The LIBERO-Plus (out-of-distribution) test rollouts are recorded by record_libero_plus.py with the same
+# number of uncertainty sequences; scripts/failure_detection/run_libero_plus.sh runs both and merges them.
+env:
+  type: libero
+  task: libero_10
+  task_ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+fiper_rollout_recorder:
+  num_uncertainty_sequences: 16
+  ode_eval_times: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95]
+  record_composed_inter_vel_diff: false
+
+domains: [id]
+n_calib_episodes: 20
+n_test_episodes: 30
+max_calibration_attempts_per_task: 20
+save_failed_calibration_rollouts: false
+
+seed: 20118
+job_name: smolvla_libero
+output_dir: outputs/fiper_rollout_recording/smolvla_libero_s01
+save_videos: false

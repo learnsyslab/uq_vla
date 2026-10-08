@@ -1,4 +1,4 @@
-# Uncertainty Quantification for Flow-Based Vision-Language-Action Models
+# Uncertainty Quantification for Flow-Based Generalist Robot Policies
 
 [Ralf Römer](https://ralfroemer.com)<sup>1</sup>,
 [Maximilian Seeliger](https://www.linkedin.com/in/maximilian-seeliger/)<sup>2</sup>,
@@ -14,366 +14,159 @@
 <sup>3</sup>MPI for Intelligent Systems
 
 [![arXiv](https://img.shields.io/badge/arXiv-2606.18043-red)](https://arxiv.org/abs/2606.18043)
-[![Website](https://img.shields.io/badge/Website-UQ--VLA-blue)](https://tum-lsy.github.io/uq_vla/)
+[![Website](<https://img.shields.io/badge/Website-project%20page-blue>)](https://tum-lsy.github.io/uq_generalist_policies/)
 [![PyTorch](https://img.shields.io/badge/Python-PyTorch-orange.svg)](https://www.pytorch.org)
 
-The official code repository for *"Uncertainty Quantification for Flow-Based Vision-Language-Action Models"*.
+The official code repository for *"Uncertainty Quantification for Flow-Based Generalist Robot Policies"*.
 
-> **Abstract:** Vision-language-action models (VLAs) combine vision-language backbones with
-> expressive generative action heads trained via flow matching on large-scale robotic
-> datasets. Despite their strong empirical performance in robotic manipulation, VLAs lack
-> mechanisms to quantify confidence in their predictions and to detect when their actions
-> may be unreliable. This presents a critical limitation for real-world deployment in
-> non-stationary environments, where models inevitably encounter scenarios outside their
-> pretraining distribution and may fail without warning. To address this, we derive an
-> efficient method for quantifying epistemic uncertainty in flow-matching models by
-> leveraging velocity-field disagreement (VFD) across a small ensemble. We successfully use
-> this uncertainty estimate for failure detection during deployment and active fine-tuning
-> of flow-based VLAs. To this end, we propose SAVE, a framework for uncertainty-guided
-> active multitask fine-tuning that reduces the number of costly expert demonstrations
-> required to adapt VLAs to new tasks. Through extensive experiments on the LIBERO
-> benchmark, we demonstrate that VFD yields better-calibrated uncertainty estimates
-> predictive of downstream performance, that VFD achieves strong performance in detecting
-> failures, and that uncertainty-guided data acquisition with SAVE requires at least 22%
-> fewer samples than baselines. In summary, our work shows that quantifying epistemic
-> uncertainty in flow-based VLAs improves both failure awareness and adaptation.
+## News
+
+- **2026-10:** Refactored code release for the updated paper. It adds failure detection experiments
+  (Push-T and LIBERO-Plus), and the X-VLA and FastWAM backbones. The previous code is on the
+  [`old_structure`](https://github.com/learnsyslab/uq_vla/tree/old_structure) branch.
+- **2026-07:** Initial code release.
+
+> **Abstract:** Generalist robot policies, such as vision-language-action models (VLAs) and world-action
+> models (WAMs), combine powerful pretrained backbones with expressive generative action heads trained via
+> flow matching on large-scale robotic datasets. Despite their strong empirical performance in robotic
+> manipulation, these policies lack mechanisms to quantify confidence in their predictions and to detect when
+> their actions may be unreliable. This presents a critical limitation for real-world deployment in
+> non-stationary environments, where models inevitably encounter scenarios outside their pretraining
+> distribution and may fail without warning. To address this, we derive an efficient method to quantify
+> epistemic uncertainty in flow-matching models by leveraging velocity-field disagreement (VFD) across a small
+> ensemble. We successfully use this uncertainty estimate for detecting failures during deployment and active
+> fine-tuning of flow-based generalist policies. For the latter, we propose SAVE, a simple yet effective
+> method for uncertainty-guided active multitask fine-tuning that reduces the number of costly expert
+> demonstrations required to adapt generalist policies to new tasks. We conduct experiments in simulation and
+> the real world, across VLAs and a WAM. VFD yields better-calibrated uncertainty estimates predictive of
+> downstream performance and detects failures with 8 pp higher overall accuracy than existing methods. Across
+> three real-world tasks, SAVE improves final average success from 39% to 47% with a fixed demonstration
+> budget. Our results show that measuring epistemic uncertainty with VFD enhances both failure awareness and
+> adaptation of generalist robot policies.
 
 ---
 
-This Readme describes how to reproduce the results reported in the paper.
+This repository contains the code for the simulation experiments in the paper.
 
-# Installation
+## Overview
 
-### Conda
+The repository has two parts that share one Python environment.
 
-```bash
-conda create -y -n uq_vla python=3.10
-conda activate uq_vla
-conda install ffmpeg=7.1.1 -c conda-forge
-pip install -e ".[smolvla,libero,uncertainty]"
-```
+`active_learning/` trains the policy ensembles and runs every experiment that involves a policy:
 
-### uv (no conda; e.g. on a cluster login node)
+- calibration of VFD and the baseline uncertainty estimates for SmolVLA, X-VLA and FastWAM on LIBERO-Long,
+  including the ablations over ensemble size, Laplace approximation and language variations,
+- active fine-tuning with SAVE and the baselines (random, diversity, AMF, Action-L2, GU) on Push-T and
+  LIBERO-Long, including the SmolVLA hyperparameter sweep and the Push-T significance test,
+- recording and scoring of the rollouts used for failure detection on Push-T and LIBERO-Plus.
 
-```bash
-uv venv --python 3.10
-uv pip install "cmake<4"
-uv pip install -e ".[smolvla,libero,uncertainty]"
-uv pip install seaborn
-source .venv/bin/activate
-```
+It contains a modified copy of [LeRobot](https://github.com/huggingface/lerobot) with the uncertainty
+estimators added, and the iterative fine-tuning pipeline (`src/iterative_fine_tuning`).
 
-## Environment
+`failure_detection/` evaluates VFD against STAC, ACE, logpZO and RND-OE as runtime failure detectors on the
+scored rollouts, based on [FIPER](https://github.com/utiasDSL/fiper).
 
-Create a `.env` file at the repo root with at least:
+The real-robot experiments are not part of this repository. We do not provide checkpoints; all ensembles are
+trained from public base models (`HuggingFaceTB/SmolVLM2-500M-Video-Instruct`, `lerobot/xvla-base`,
+`lerobot/fastwam_base`) and datasets (`HuggingFaceVLA/libero`, `lerobot/pusht`). The READMEs in the two
+folders describe each step in more detail.
 
-```bash
-STORAGE_ROOT=/path/to/storage           
-HF_HOME=/path/to/huggingface_cache
-```
+## Installation
 
-Before running any script in the rest of this README:
+We used Python 3.10 and PyTorch 2.7 with CUDA 12.8.
 
 ```bash
-source .venv/bin/activate
-export PYTHONPATH=src
-source .env
+conda create -n vfd python=3.10 && conda activate vfd
+conda install -c conda-forge ffmpeg
+pip install -e "active_learning[all]"
+cp active_learning/.env.example active_learning/.env
 ```
 
-# Calibration
+The `.env` file sets the Hugging Face cache and headless rendering for LIBERO. The plotting scripts use LaTeX,
+so generating the figures also needs a TeX installation. For the LIBERO-Plus experiment, additionally run
+`pip install -e "active_learning[libero_plus]"` and `bash active_learning/scripts/setup_libero_plus.sh`,
+which downloads the benchmark and its assets (6.4 GB).
 
-All calibration figures use one iterative fine-tuning run with random episode selection, across 3 seeds and the first 15 rounds (`--max_round 15`):
+## Running the experiments
 
-```
-uniform_leak3_weighted_pools_lr_schedule_history05_steps2000_s01
-uniform_leak3_weighted_pools_lr_schedule_history05_steps2000_s23
-uniform_leak3_weighted_pools_lr_schedule_history05_steps2000_s45
-```
+Unless noted otherwise, run the commands from `active_learning/`. Every experiment uses ensembles of two
+models. A seed pair names the pretraining seeds of the two members (`s01` for seeds 0 and 1). The LIBERO
+experiments use the pairs `s01`, `s23` and `s45`; Push-T uses ten pairs, each pretrained on its own random
+subset of 50 demonstrations. All results are written to `active_learning/outputs/`.
 
-The calibration pipeline is split into a GPU compute layer and a cache-only plot layer.
-
-- **`bash/calibration/*` — Compute (GPU, cluster).** Run inference and write
-  per-method, per-round caches into the run tree
-  (`round_*/calibration_comparison/<method>_episode_uncertainties.json`).
-- **`bash/paper_plots/*` — Plot (cache-only, CPU).** Re-read the caches and
-  regenerate the paper figures. No GPU, runs in seconds.
-
-## Stage 1 — Generate the calibration runs (GPU, cluster)
-
-Iterative fine-tuning with uniform/random selection, swept over seed pairs:
+**Pretraining.** Train the ensemble members for each policy:
 
 ```bash
-bash bash/calibration/calibration_all.sh \
-  configs/iterative_fine_tuning/calibration_experiment/uniform_leak3_weighted_pools_lr_schedule.yaml
+bash scripts/pretrain.sh fm_pusht 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19
+bash scripts/pretrain.sh smolvla_libero 0 1 2 3 4 5
+bash scripts/pretrain.sh xvla_libero 0 1 2 3 4 5
+bash scripts/pretrain.sh fastwam_libero 0 1 2 3 4 5
+bash scripts/pretrain.sh smolvla_libero_all40 0 1 2 3 4 5
 ```
 
-This calls `bash/active_learning/cluster_all.sh` per seed pair, submitting a train +
-eval SLURM job per round. Output lands in
-`outputs/iterative_fine_tuning/<run>_sXX/round_*/` with checkpoints and
-`round_evaluation.json` (per-task success rates) per round.
+The LIBERO ensembles are trained on LIBERO-Spatial, -Object and -Goal and three of the ten LIBERO-Long tasks.
+`smolvla_libero_all40` is trained on all 40 LIBERO tasks and is only used for the LIBERO-Plus failure
+detection experiment. FastWAM needs precomputed text embeddings, see `active_learning/README.md`.
 
-Prerequisite: a pretrained SmolVLA ensemble (see `bash/pretrain/`).
-
-## Stage 2 — Compute uncertainty caches (GPU, cluster)
+**Calibration.** Each run fine-tunes an ensemble for 15 rounds with randomly selected demonstrations, keeps
+all checkpoints and then scores every round with all uncertainty methods. `--extras` adds the SmolVLA
+ablations from the appendix.
 
 ```bash
-bash bash/calibration/submit_calibration_comparison.sh \
-  plots/calibration_comparison/libero/uniform_leak3_weighted_pools_lr_schedule_history05_steps2000 \
-  outputs/iterative_fine_tuning/uniform_leak3_weighted_pools_lr_schedule_history05_steps2000_s01 \
-  outputs/iterative_fine_tuning/uniform_leak3_weighted_pools_lr_schedule_history05_steps2000_s23 \
-  outputs/iterative_fine_tuning/uniform_leak3_weighted_pools_lr_schedule_history05_steps2000_s45 \
-  -- --rounds 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+bash scripts/run_calibration.sh smolvla s01 --extras
+bash scripts/run_calibration.sh xvla s01
+bash scripts/run_calibration.sh fastwam s01
 ```
 
-Submits one `calibration_comparison.py` job per seed (`cluster_methods_comparison.sbatch`)
-plus an aggregation job. Caches are written per round under
-`round_*/calibration_comparison/`. The aggregation job also creates per-round scatter
-plots and the Table 1 summary chart.
-
-Extra caches needed for some figures:
-
-- **Ensemble size ablation:** requires ensemble members `00..03` in each round
-  (train extras with `bash/active_learning/cluster_train_extra_members.sbatch`),
-  then compute the per-size caches:
-  ```bash
-  sbatch cluster_ensemble_size_ablation.sbatch \
-    --run_dirs <s01> <s23> <s45> \
-    --rounds 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 \
-    --ensemble_sizes 2 3 4 --env libero
-  ```
-- **Language prompt variation:** GPU rollouts under prompt perturbations:
-  ```bash
-  bash bash/calibration/submit_language_variation.sh \
-    plots/language_variation/leak3fixed_weighted_pools_lr_schedule_history05_steps2000 \
-    <s01> <s23> <s45> -- --round 14
-  ```
-- **Ensemble vs Laplace:** fit the last-layer Laplace posterior per
-  round (`bash/calibration/fit_laplace.sh`), then run `calibration_comparison.py`
-  including the `vfd_laplace` method.
-
-## Stage 3 — Generate figures (cache-only, no GPU)
-
-Once the caches exist, every figure regenerates in seconds:
+**Active fine-tuning.** Each run fine-tunes an ensemble with one acquisition rule (`random`, `diversity`,
+`amf`, `action_l2`, `gu` or `vfd`) on one seed pair and evaluates every round. The SmolVLA sweep covers the
+remaining task temperatures and AMF noise scales.
 
 ```bash
-bash bash/paper_plots/calibration_table.sh    
-bash bash/paper_plots/ensemble_ablation.sh      
-bash bash/paper_plots/language_variation.sh     
-bash bash/paper_plots/ensemble_vs_laplace.sh    
+bash scripts/run_active_learning.sh configs/active_learning/smolvla/vfd.yaml s01
+bash scripts/run_smolvla_sweep.sh s01 s23 s45
 ```
 
-# Active Fine-Tuning (SAVE)
-
-An M = 2 SmolVLA ensemble is iteratively fine-tuned on LIBERO-10 over R = 15 rounds.
-Each round prioritizes tasks by their mean VFD uncertainty (via a task-sampling
-temperature τ), requests n_e = 5 expert demonstrations, and fine-tunes with a
-50/50 replay of pretraining data (λ = 0.5). All runs use 3 seeds.
-
-## Paper setup (Appendix B.6)
-
-| Setting | Value |
-| --- | --- |
-| Benchmark | LIBERO-10 (K = 10 tasks) |
-| Ensemble | SmolVLA, M = 2 members (pretrained on Goal/Spatial/Object + 3 LIBERO-10 "leak" tasks) |
-| Rounds R | 15 |
-| Demonstrations per round n_e | 5 (75 total) |
-| Gradient steps per round | 4000, batch size 32, cosine LR 5e-5 → 5e-6 (200 warmup) |
-| Replay ratio λ | 0.5 |
-| Task-sampling temperature τ | sweep {0, 1, 1.5, 2, 2.5, 3} (τ = 0 is uniform) |
-| Seeds | 3 (1000, 1001, 1002) |
-| Per-round evaluation | 30 rollouts, first ensemble member, ≤ 520 steps |
-
-These match the imported configs under `configs/iterative_fine_tuning/iter_al*/`
-(`total_rounds: 15`, `episodes_per_round: 5`, `steps: 4000`, replay `0.5/0.5`,
-two `ensemble_model_paths`, three `multi_seed` runs).
-
-## Config → paper method mapping
-
-Each directory holds the temperature sweep `t0, t1, t1.5, t2, t2.5, t3`.
-
-## How to run (cluster)
-
-The launcher submits, per config, a `train → eval → aggregate` chain for every
-seed declared in that config's `multi_seed` block:
+**Failure detection.** Record and score the rollouts in `active_learning/`, then evaluate the detectors in
+`failure_detection/`:
 
 ```bash
-# best VFD temperature
-bash bash/active_learning/submit_multi_seed.sh \
-  configs/iterative_fine_tuning/iter_al/t2.5_w50_eps5_step4000_lr.yaml
-
-# full VFD temperature sweep
-bash bash/active_learning/submit_multi_seed.sh configs/iterative_fine_tuning/iter_al/*.yaml
+bash scripts/failure_detection/run_pusht.sh
+bash scripts/failure_detection/run_libero_plus.sh
+cd ../failure_detection && bash run_all.sh
 ```
 
-Per seed it submits a training job
-(`cluster_train_multi_seed_child.sbatch` → `iterative_fine_tuning.run_multi_seed_child`)
-and a dependent evaluation job
-(`cluster_eval_multi_seed_child.sbatch` → `iterative_fine_tuning.evaluate_run`);
-once all seeds finish, one aggregation job
-(`cluster_eval_multi_seed_aggregate.sbatch` → `iterative_fine_tuning.summarize_multi_seed_run`)
-summarizes success rates across seeds into `multi_seed_evaluation.json`.
+**Figures and tables.** `bash paper_plots/make.sh` in `active_learning/` generates all calibration and
+active fine-tuning figures and tables from the results in `outputs/` (no GPU needed); `run_all.sh` writes the
+failure detection tables.
 
-## Diversity baseline (`predefined_ranking`)
+The runs in the paper used one 32 GB GPU for Push-T, one GPU with at least 40 GB per ensemble member for
+SmolVLA, one 80 GB GPU for X-VLA and four 141 GB GPUs for FastWAM. `active_learning/scripts/slurm_template.sbatch`
+can be used to run the commands on a SLURM cluster. Since training and simulation are not deterministic on
+GPUs, rerunning the experiments gives similar but not identical numbers.
 
-The `iter_al_diversity` configs use a `predefined_ranking` selection strategy:
-each round simply pops the next `n_e` not-yet-selected episodes from a
-precomputed ranking file. The paper's diversity baseline ranks all
-candidate initial observations by SigLIP k-center-greedy; that ranking is
-computed offline, written to JSON, and referenced from the config via
-`selection.predefined_ranking_path`.
-
-### Ranking file format
-
-A JSON list of objects, ordered most-diverse-first. Each entry must have at
-least `episode_id`; optional fields (`task_group`, `task_id`, `instruction`,
-`frame_index`) are recorded into the per-round selection manifest for
-downstream analysis.
-
-```json
-[
-  {"episode_id": 23, "task_group": "libero_10", "task_id": 2, "instruction": "..."},
-  {"episode_id": 11, "task_group": "libero_10", "task_id": 7, "instruction": "..."}
-]
-```
-
-The default path referenced by the diversity configs is
-`${STORAGE_ROOT}/outputs/active_learning/diversity_ranking_libero10.json`.
-
-### Producing the ranking
-
-Use [`scripts/diversity/k_greedy.py`](scripts/diversity/k_greedy.py)
-(SigLIP `so400m-patch14-384` + k-center-greedy over the candidate task pool); see
-that script's `--help` for arguments. Its output should be written to the path
-the config expects, in the format above.
-
-### Implementation
-
-`predefined_ranking` is implemented in
-[`src/iterative_fine_tuning/selection.py`](src/iterative_fine_tuning/selection.py)
-via `_run_predefined_ranking_selection`. It short-circuits at the top of
-`run_selection_round`, skipping the policy / ensemble / uncertainty path, and
-writes the usual `SelectionManifest` so the rest of the iterative loop (training
-and evaluation) is unchanged. The companion config changes (allowing empty
-`ensemble_model_paths`, adding the `predefined_ranking_path` field) live in
-[`src/iterative_fine_tuning/config.py`](src/iterative_fine_tuning/config.py).
-
-## Implementation note (thin multi-seed wrapper)
-
-The multi-seed orchestration is a thin layer over main's existing single-run loop:
-`iterative_fine_tuning.main.run()` dispatches to `_run_multi_seed` when a config
-declares `multi_seed` seeds/runs, which builds a per-seed child config and calls
-the unchanged single-run loop (`_run_single`). Evaluation reuses `evaluate_run.py`.
-main's selection / training / evaluation behavior is unchanged, so the calibration
-and single-seed results above are unaffected.
-
-# Failure Prediction
-
-Reproduce the runtime **failure-detection** experiment. At each policy-inference timestep we compute the VFD epistemic
-uncertainty score and flag the rollout as *Fail* once the score exceeds a
-per-task conformal threshold calibrated on successful rollouts. The paper reports
-Accuracy, True-Positive-Rate (TPR), True-Negative-Rate (TNR), normalized
-Detection Time, and Timestep-Wise Accuracy (TWA), and — following the failure
-prediction framework — averages over the conformal quantiles `0.90, 0.91, …, 0.99`
-rather than cherry-picking one confidence level.
-
-| Code name | Paper name |
-| --- | --- |
-| `vfd` | VFD (ours) |
-
-> Baselines (Entropy, TC, RND-OE, ACE) are computed downstream — see
-> [Downstream FIPER metrics/plots](#downstream-fiper-metricsplots) below.
-
-## Pipeline overview
-
-The reproduction has two layers. This repo covers the first (record + score);
-the FIPER metric computation and the final plot live in the separate
-[FIPER repo](https://github.com/learnsyslab/fiper).
-
-1. **Record** LIBERO-10 rollouts, caching the intermediate
-   ODE-trajectory tensors needed for scoring
-   (`src/lerobot/scripts/fiper_data_generation/record_fiper_rollout.py`).
-2. **Score** each recorded rollout with the M = 2 ensemble, producing the
-   per-timestep `vfd_oneway` and `vfd` (VFD) uncertainty
-   scores (`src/lerobot/scripts/fiper_data_generation/score_fiper_rollout.py`).
-
-The `vfd` metric is implemented in
-[`src/lerobot/fiper_data_generator/fiper_rollout_scorer.py`](src/lerobot/fiper_data_generator/fiper_rollout_scorer.py)
-(`compute_ensemble_vfd_scores`, gated by the
-`bayesian_ensemble: [..., vfd]` entry in the score config).
-
-## Prerequisite
-
-A trained M = 2 SmolVLA ensemble. The configs/scripts default to the round-15
-checkpoints of the SAVE runs from
-[Active Fine-Tuning (SAVE)](#active-fine-tuning-save), per seed `s01 / s23 / s45`:
-
-```
-outputs/iterative_fine_tuning/uniform_leak3fixed_weighted_pools_lr_schedule_history05_steps2000_<seed>/round_015/training/member_0{0,1}/checkpoints/last/pretrained_model
-```
-
-Override via the `POLICY_CHECKPOINT`, `ENSEMBLE_MEMBER_00`, `ENSEMBLE_MEMBER_01`
-environment variables (see the scripts below).
-
-## Configs
-
-The paper pipeline uses a single record/score config pair:
-
-| Config pair (`record_fiper_rollout/`, `score_fiper_rollout/`) | Purpose |
-| --- | --- |
-| `libero10_all_tasks_5eps.yaml` | LIBERO-10, scores `vfd_oneway` + `vfd` |
-
-Episode counts, ODE evaluation times, and the ensemble paths are set inside the
-YAML — see `configs/smolvla/score_fiper_rollout/libero10_all_tasks_5eps.yaml`.
-
-## How to run
-
-`paper_plots/all_commands.sh` is the end-to-end orchestrator. Its **Step 1** is
-this repo's portion; per seed it runs:
-
-```bash
-# record + one-way (vfd_oneway) scoring, sharded over the 10 tasks
-scripts/fiper/run_libero10_seed_5eps_data.sh s01
-# re-score the recorded rollouts with vfd (VFD)
-scripts/fiper/run_libero10_seed_2way_scoring.sh s01
-```
-
-The script layering is
-`run_libero10_seed_*` → `run_libero10_parallel_*` (per-GPU task fan-out) →
-`run_libero10_task_*` (one task → `record_fiper_rollout.py` / `score_fiper_rollout.py`).
-Useful env vars: `TASK_IDS`, `GPU_IDS`, `MAX_PARALLEL`, `SEED_BASE`,
-`EXPERIMENT_NAME`. Scored output lands in
-`outputs/fiper_rollout_scoring/<experiment>/libero_10/`. For a quick single-task
-check, run one task shard directly:
-`scripts/fiper/run_libero10_task_5eps_data.sh 0`.
-
-## Downstream FIPER metrics/plots
-
-Steps 2–5 of `paper_plots/all_commands.sh` — computing the FIPER detection metrics
-for all methods, merging the `vfd` results, and rendering
-Figure 12 via `scripts/plot_seed_mean_accuracy_detection.py` — run against the
-separate [FIPER repository](https://github.com/learnsyslab/fiper). The
-`all_commands.sh` reference (with `FIPER_ROOT`-relative paths) is included as a
-record of the full cross-repo workflow; integrating those steps into this repo is
-a follow-up.
-
-# Citation
+## Citation
 
 If you find this work useful, please consider citing our paper:
 
 ```bibtex
 @article{romer2026uq_vla,
-  title={Uncertainty Quantification for Flow-Based Vision-Language-Action Models},
+  title={Uncertainty Quantification for Flow-Based Generalist Robot Policies},
   author={Ralf R{\"o}mer and Maximilian Seeliger and Saida Liu and Ben Sturgis and Marco Bagatella and Daniel Marta and Andreas Krause and Angela P. Schoellig},
   journal={arXiv preprint arXiv:2606.18043},
   year={2026}
 }
 ```
 
-# Acknowledgments
+## Acknowledgments
 
-This work builds upon:
-- [LeRobot](https://github.com/huggingface/lerobot) by Hugging Face
-- [SmolVLA](https://huggingface.co/blog/smolvla) by Hugging Face
-- [LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO) by Bo Liu et al.
+This work builds on [LeRobot](https://github.com/huggingface/lerobot), [SmolVLA](https://huggingface.co/blog/smolvla),
+[X-VLA](https://huggingface.co/lerobot/xvla-base), [FastWAM](https://huggingface.co/lerobot/fastwam_base),
+[LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO), [LIBERO-Plus](https://github.com/sylvestf/LIBERO-plus)
+and [FIPER](https://github.com/utiasDSL/fiper). We thank the authors for making their work available.
 
-We thank the authors of these projects for their open-source contributions.
+## License
+
+This repository is released under the Apache 2.0 license (`LICENSE`). `active_learning/src/lerobot` is a
+modified copy of LeRobot (Apache 2.0, `active_learning/LICENSE_LEROBOT`), and `failure_detection/` builds on
+FIPER (MIT, `failure_detection/LICENSE_FIPER`).

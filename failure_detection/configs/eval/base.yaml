@@ -1,0 +1,121 @@
+window_sizes: [1, 2, 3, 4, 5]
+quantiles: [0.9, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99] 
+window_weighting: uniform # "uniform" or "linear" or "exponential"
+score_compounding_method: mean # mutiple methods
+history_length: 0 # How many historical inputs a method gets. Note: This includes the current step, so 0 and 1 are the same
+detection_patience: 0 # (num_steps-1) to surpass the threshold before the rollout is considered a failure
+# Deterministic or stochastic training/evaluation
+deterministic: True
+seed: 1
+
+# Episode-level split of the calibration rollouts for detectors that train on them
+# (RND-*, logpZO): train_fraction of the calibration episodes are used for fitting, the
+# rest for threshold calibration, so no episode is ever both. train_fraction: 1.0
+# disables the split (train and calibrate on all calibration episodes). Methods that
+# train nothing (bayesian/VFD, entropy/ACE, tc/STAC) ignore this and keep the full
+# calibration set -- they have no in-sample scores to leak.
+calibration_split:
+  train_fraction: 0.5
+  seed: 1
+
+# Where learned detectors (RND-*, logpZO) get their training data (shared_utils.training_data):
+#   demos        the policy's own training demonstrations, embedded offline with its observation
+#                encoder (active_learning/scripts/failure_detection/run_{pusht,libero_plus}.sh) into
+#                <task_data_path>/<demo_embeddings_file>. FAIL-Detect's setting for both methods.
+#                Nothing is fit on calibration rollouts, so thresholds use ALL of them.
+#   calibration  FIPER's calibration-only protocol: fit on the training half of the calibration
+#                rollouts (calibration_split above), threshold on the other half. One model per task.
+#   calibration_pooled  Same data, one model per policy: fit once on the union of the training halves
+#                of every task the pipeline evaluates (pipeline.py builds all task datasets first),
+#                stored in <data root>/pooled_models and reused by every task; thresholds stay
+#                per task on that task's held-out half. Run with `+training_data=calibration_pooled`.
+#   demos_pooled One demo-trained model per policy (multi-task policies such as SmolVLA on LIBERO): fit on the
+#                policy's whole multi-task training set, embedded by the extraction with
+#                --frame_stride / --pad_kv_tokens into <suite dir>/<demo_embeddings_file> (one level above
+#                the taskNN dirs), cached in <suite dir>/pooled_models (never cleared). Rollouts of each
+#                task are padded to the demo width by `pooled_alignment`; thresholds per task on the
+#                full calibration set. logpZO's per-mode dicts (num_epochs, cache) fall back to `demos`.
+# Set per experiment (e.g. default_pusht_all206.yaml: training_data: demos); pipeline.py forwards
+# it into every method config, since per-method configs cannot see experiment settings otherwise.
+training_data: calibration
+demo_embeddings_file: demo_embeddings/member_00_global_cond.pt
+
+# How to extend time-varying thresholds
+extend_threshold: mean # "last" or "mean"
+# How to handle zero thresholds
+handle_zero_thresholds: 
+  style: standard
+  small_score: 1e-6
+  clip_threshold: 1e-6
+  cap_norm_scores: 5
+  small_threshold: 1e-3
+# "add_small_score": Adds small score to every uncertainty score
+# "clip_threshold": Clips the threshold to a minimum value (1e-6)
+# "cap_norm_scores": Clip threshold to a minimum value (1e-6) and the clips the normalized scores to 5 (upper bound)
+# "small_threshold":
+# Which tresholds to use for the evaluation
+thresholds:
+  tvt_mean_std: False   # Per timestep, assumes Gaussian
+  tvt_quantile: False    # Per timestep
+  tvt_cp_band: True    # For whole rollout
+  ct_mean_std: False
+  ct_quantile: True
+# threshold_computation: "mean_std" # "quantile" or "mean_std"
+# tvt_computation: "mean_std" # "mean_std" or "cp_band"
+
+# For selective loading of tensors (overwritten by the method-specific config)
+required_tensors:
+  - "obs_embeddings"
+  - "action_preds"
+  
+optional_tensors: []
+
+required_actions:
+  - "position"
+
+optional_actions:
+  - "rotation"
+
+# Hyperparameters for nonuniform windows
+window_weighting_strategy:
+  linear:
+    slope: 0.10 
+  exponential:
+    power: 1.10
+  uniform:
+
+
+# Base Normalization parameters
+normalize_tensors: 
+  obs_embeddings: False
+  rgb_images: True
+  actions: False
+  action_preds: False
+  states: False
+  mode: "gaussian" # "gaussian" or "limits"
+  range_eps: 1e-5
+  limits: [-1, 1]
+  fit_offset: True
+
+
+
+# Model Hyperparameters to identify model during results evaluation 
+hparams:
+  # Evaluation hyperparameters
+  eval:
+    window_weighting: ${eval.window_weighting}
+    window_weighting_strategy: ${eval.window_weighting_strategy.${eval.window_weighting}}
+    extend_threshold: ${eval.extend_threshold}
+    handle_zero_thresholds: ${eval.handle_zero_thresholds}
+    detection_patience: ${eval.detection_patience}
+  # Model hyperparameters (extended by the method-specific config)
+  model:
+    training_data: ${eval.training_data}
+    demo_embeddings_file: ${eval.demo_embeddings_file}
+    required_tensors: ${eval.required_tensors}
+    optional_tensors: ${eval.optional_tensors}
+    required_actions: ${eval.required_actions}
+    optional_actions: ${eval.optional_actions}
+    normalize_tensors: ${eval.normalize_tensors}
+    history_length: ${eval.history_length}
+

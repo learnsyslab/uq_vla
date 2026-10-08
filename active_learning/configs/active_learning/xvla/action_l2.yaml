@@ -1,0 +1,111 @@
+# X-VLA active fine-tuning on LIBERO-10. SAVE w/ Action-L2 (task temperature 1.5).
+# 15 rounds x 5 episodes, replay 50/50 between D_pre and the selected episodes.
+
+dataset:
+  repo_id: HuggingFaceVLA/libero
+  libero_tasks:
+    libero_10: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+policy:
+  type: xvla
+  device: cuda:0
+  pretrained_path: outputs/pretrain/xvla_libero/seed_${SEED_A}/checkpoints/last/pretrained_model
+  chunk_size: 30
+  n_action_steps: 15
+  dtype: bfloat16
+  normalization_mapping:
+    VISUAL: IDENTITY
+    ACTION: MIN_MAX
+    STATE: MIN_MAX
+  action_mode: auto
+  tokenizer_max_length: 1024
+  max_state_dim: 20
+  resize_imgs_with_padding: [224, 224]
+  num_image_views: 3
+  empty_cameras: 1
+  optimizer_betas: [0.9, 0.95]
+  optimizer_weight_decay: 0.0001
+  optimizer_lr: 1.0e-4
+  scheduler_warmup_steps: 200
+  scheduler_decay_steps: 4000
+  scheduler_decay_lr: 5.0e-6
+  florence_config:
+    text_config:
+      max_position_embeddings: 4096
+    vision_config:
+      image_pos_embed:
+        type: learned_abs_2d
+        max_pos_embeddings: 50
+
+paths:
+  env_file: .env
+  run_root: outputs/active_learning/xvla
+  run_name: action_l2_${SEED_PAIR}
+
+iteration:
+  total_rounds: 15
+  episodes_per_round: 5
+  bootstrap_selection_paths: []
+  warm_start_from_previous_round: true
+
+replay:
+  history_fraction: 0.5
+  new_fraction: 0.5
+  sampling_mode: weighted_pools
+  history_tasks:
+    libero_spatial: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    libero_object: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    libero_goal: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    libero_10: [0, 1, 2]
+  samples_per_epoch: 20000
+  replacement: true
+
+selection:
+  strategy: task_weighted_top_k
+  uncertainty_method: cross_bayesian
+  scorer_type: ensemble
+  scoring_metric: action_l2
+  num_action_samples: 5
+  observation_batch_size: 32
+  ensemble_model_paths:
+    - outputs/pretrain/xvla_libero/seed_${SEED_A}/checkpoints/last/pretrained_model
+    - outputs/pretrain/xvla_libero/seed_${SEED_B}/checkpoints/last/pretrained_model
+  candidate_tasks:
+    libero_10: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  task_selection_temperature: 1.5
+  task_weighted_episode_selection: top_k
+  device: cuda:0
+  seed: 0                         # replaced per seed pair (seed_pairs.*.selection_seed)
+
+execution:
+  stages: [select, train]
+  resume: true
+  overwrite_existing_round: false
+  save_candidate_scores: true
+
+ensemble_training:
+  parallel_members: false         # members train one after the other on one GPU
+  member_devices: [cuda:0, cuda:1]
+
+num_workers: 8
+batch_size: 64
+steps: 4000
+seed: 1000                        # replaced per seed pair (seed_pairs.*.seed)
+eval_freq: 0
+log_freq: 20
+save_checkpoint: true
+save_freq: 10000
+use_policy_training_preset: true
+reinitialize_selected_layers: false
+rename_map: {}
+
+wandb:
+  enable: false
+
+# One run per seed pair: pick it with --seed_pair=<name> (or SEED_PAIR=<name>). `members` are the
+# pretraining seeds of the two ensemble members (${SEED_A}, ${SEED_B} above); `seed` and
+# `selection_seed` are the training and selection seeds.
+seed_pairs:
+  s01: {members: [0, 1], seed: 1000, selection_seed: 0}
+  s23: {members: [2, 3], seed: 1000, selection_seed: 2}
+  s45: {members: [4, 5], seed: 1000, selection_seed: 4}

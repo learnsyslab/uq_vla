@@ -1,0 +1,205 @@
+
+# Whether to overwrite the summaries or the data
+overwrite_summary: no # "oldest" or "latest" or "all" or {Anthing} (no overwriting)
+# Overwrite the data
+overwrite_data: True
+# Create a summary (create plots options at the end of this file)
+create_summary: True
+# Saving and printing hyperparameters requires the "Method" and "HID" columns to be present in the summary table at the end.
+print_hyperparameters: False # Print the hyperparameters in terminal
+save_hyperparameters: False # Save the hyperparameters as csv file
+include_hparams: # empty list = include all
+  - eval
+  - model
+print_hparams:
+  only_best: False
+  only_differences: True
+save_hparams:
+  only_best: False
+  only_differences: True
+
+# The following setting are executed in the order they are defined
+
+# Which columns contain the metrics. This columns are the ones being averaged or sorted or used to determine "best". False: Descending, True: Ascending. Listed in priority order.
+metric_columns:
+  # M: False
+  TWA: False  
+  Accuracy: False
+  Det. Time: True
+  TPR: True
+  TNR: True
+  ID TWA: True
+  ID Accuracy: True
+  ID Det. Time: True
+  ID TPR: True
+  ID TNR: True
+  OOD TWA: True
+  OOD Accuracy: True
+  OOD Det. Time: True
+  OOD TPR: True
+  OOD TNR: True
+  ID S: False
+  OOD S: False 
+  ID F: False
+  OOD F: False
+
+# Which columns to remove from the summary table.
+filter_columns: 
+  - M
+  # - TWA
+  - ID S
+  - OOD S
+  - ID F
+  - OOD F
+  # - TPR
+  # - TNR
+
+# Keys: columns, Values: List of values to select or to remove (by using "!" in front of values).
+# If "best" included, the best value (of the remaining ones after processing the entries before best) is selected and the column is removed from the summary table.
+# Currently, now mixing between negative and positive values is allowed. (best works with both)
+drop_after_best: False # Drop the column after selecting the best value
+# Which columns to group by when selecting the best value (e.g. when grouping by Method, HID, Threshold the best value is calculated for each Method, HID, Threshold combination by averaging the metrics columns over the remaining columns)
+groups_for_best: [Method]
+# Which values to filter by. If a column is not listed,or a list is empty all values are used.
+filter_values:
+  Task: # String values
+  Method:  # String values
+  Quantile: # Float values or "best" for the best value
+    # - best
+  Window: # Windows must be in string format, e.g. "1", "2", "3", etc.
+    - best
+  HID: # Integer values or "best" for the best value
+    # - 1
+  Threshold: # String values, e.g. "tvt_mean_std", "tvt_quantile", "tvt_cp_band", "ct_mean_std", "ct_quantile" or best
+    - best
+    # - tvt_mean_std
+    # - tvt_quantile
+    # - tvt_cp_band
+    # - ct_quantile
+    # - ct_mean_std
+
+# Which columns to average over. Those columns are dropped after averaging.
+average_columns:
+  - Quantile
+  - Task 
+
+# Column order for the summary table (the remaining columns are sorted alphabetically)
+column_order:
+  - Method
+  - Task
+  - M
+  - TWA
+  - Accuracy
+  - Det. Time
+  - Window
+
+# Additional sorting of columns. True: Ascending False: Descending. Only for display purposes.
+sorting:
+  M: False
+  TWA: False
+  Accuracy: False
+
+# Uncertainty Scores over t (rollout steps) Plots
+uncertainty_plots:
+  create_plots: False # True or False
+  exclude_all: True # Exclude cumulative plots
+  drop_after_best: False # Drop the column after selecting the best value
+  filter_values:
+    Method: # None/empty means all methods
+    Window: best
+    Quantile: best 
+    Threshold:
+      - tvt_cp_band
+    HID: best # Only one value, best or an integer
+  combine_scores: mean # median or mean
+  # Which scores to show in the plots
+  show:
+    threshold: True # True or False
+    calibration: True # True or False
+    test:
+      all: False # True or False
+      id_success: True # True or False
+      ood_success: True # True or False
+      id_fail: True # True or False
+      ood_fail: True # True or False
+
+
+quantile_impact:
+  create_plots: False # True or False
+  exclude_all: False # Exclude cumulative windows
+  groups_for_best: [Method, HID, Threshold] # Which columns to group by when selecting the best value
+  drop_after_best: False # Drop the column after selecting the best value
+  filter_values:
+    Method: # None/empty means all methods
+    Window: best
+    Quantile:  # None/empty means all quantiles 
+    HID: best # Only one value, best or an integer
+    Threshold: best
+  average_columns: ["Task"]
+  metric_columns: 
+    M: False
+    TWA: False
+    Accuracy: False
+  metrics_to_plot: [TWA] # ["TPR", "TNR"] # "TWA" or "Accuracy" or "M", metric for the plot
+
+
+window_impact:
+  create_plots: False # True or False
+  exclude_all: True # Exclude cumulative windows (all)
+  groups_for_best: ["Method", "HID", "Threshold"] # Which columns to group by when selecting the best value
+  drop_after_best: True # Drop the column after selecting the best value
+  filter_values:
+    Method: # None/empty means all methods
+    Quantile: best
+    Window: # None/empty means all windows
+    HID: best # Only one value, best or an integer
+    Threshold: best
+  average_columns: ["Task", "Quantile"]
+  metric_to_plot: "TWA" # "TWA" or "Accuracy" or "M", metric for the plot
+
+
+rollout_type_stats:
+  create_plots: False # True or False
+  exclude_all: True # Exclude cumulative windows (all)
+  groups_for_best: ["Method", "HID", "Threshold"] # Which columns to group by when selecting the best value
+  normalize_by_mean: True # Normalize the values by the mean of the OOD_fail type
+  filter_values:
+    Task: # None/empty means all tasks
+    Method: # ["entropy"] # ["rnd_oe_or_entropy"] # None/empty means all methods
+    Quantile: ["best"] # None/empty means all methods
+    Window: # None/empty means all windows
+    HID: ["best"] # Only one value, best or an integer
+    Threshold: ["best"]
+  average_columns: ["Task"]
+  annotations:
+    mean:
+      show: True # Show the mean value vertical bar
+      text: True # Show the mean value text
+    median:
+      show: False # Show the median value vertical bar
+      text: False # Show the median value text
+    # Note: The percentile are always symmetric, so if you show the 90% percentile, the 10% percentile is also shown
+    quantiles:
+      show: [0.9] # Show the 90% percentile vertical bar
+      text: False # Show the 90th percentile value text
+  # up_percentile: 90 # Which percentie to use for the upper bound. For the lower bound, use 1 - up_percentie
+  filter_columns: # Columns to filter
+  filter_outliers: False
+
+
+
+method_name_mapping:
+  rnd_oe: "RND-OE"
+  entropy: "ACE"
+  tc: "STAC"
+  logpzo: "logpZO"
+  bayesian_ensemble_inter_vel_diff: "VFD"
+  bayesian_ensemble_inter_vel_diff_2way: "VFD (2-way)"
+
+font_sizes:
+  title: 14
+  axis: 12
+  legend: 12
+  ticks: 10
+  label: 14
+  annotation: 10

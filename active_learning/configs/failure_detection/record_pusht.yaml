@@ -1,0 +1,21 @@
+# Failure-detection rollouts on Push-T with the 50-episode pretrained FM-Policy ensembles
+# (configs/pretrain/fm_pusht.yaml). Member A of a seed pair generates the rollouts; scripts/failure_detection/
+# run_pusht.sh sets the policy, seed and output directory per pair.
+# n_calib_episodes counts *successful* rollouts (calibration sets hold successes only), so at a success rate
+# of ~0.2 collecting 70 takes roughly 320 attempts. The test set holds every rollout, successful or not.
+env:
+  type: pusht
+
+fiper_rollout_recorder:
+  num_uncertainty_sequences: 128
+  ode_eval_times: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95]
+  record_composed_inter_vel_diff: false
+
+domains: [id]
+n_calib_episodes: 70
+n_test_episodes: 200
+
+seed: 40118
+job_name: pusht
+output_dir: outputs/fiper_rollout_recording/pusht_pre50_s01
+save_videos: false

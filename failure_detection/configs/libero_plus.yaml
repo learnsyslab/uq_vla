@@ -1,0 +1,50 @@
+# Failure detection on LIBERO-Plus with the SmolVLA ensembles, one run per two-member ensemble. Per LIBERO-10
+# task: 20 vanilla calibration rollouts (successes), 30 vanilla in-distribution test rollouts and 6 perturbation
+# families x 30 LIBERO-Plus test rollouts (the tables report the perturbed, i.e. OOD, test rollouts).
+# Data root layout: <root>/libero_10 -> the ensemble's scored-rollout suite directory
+# (taskNN/rollouts/{calibration,test}/*.pkl and demo_embeddings/); run_libero_plus.sh sets this up.
+#
+# logpZO and RND-OE: one model per policy, trained on its whole multi-task training set (training_data:
+# demos_pooled), cached in <suite dir>/pooled_models. SmolVLA's observation embedding (the mid-layer key/value
+# cache over the prefix tokens) has a task-dependent number of instruction tokens, so rollouts are zero-padded
+# to the demonstrations' width (pooled_alignment).
+defaults:
+  - _self_
+  - eval: bayesian
+  - task: libero_10
+  - results: base
+
+tasks: [libero_10]
+suite_to_task_ids:
+  libero_10: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+rnd_models: [rnd_oe]
+methods: [bayesian, entropy, tc, logpzo]
+
+combine_methods: false
+combined_methods: {}
+
+train_rnd: true
+
+max_calibration_rollouts: 20
+
+training_data: demos_pooled
+demo_embeddings_file: demo_embeddings/smolvla_all40_stride10_obs_embedding.pt
+
+pooled_alignment:
+  kind: kv_cache
+  kv_heads: 5
+  head_dim: 64
+  image_tokens: 32
+  state_tokens: 1
+  mode: pad_language
+
+# VFD: one-way velocity-field disagreement at all recorded flow times, all 16 action samples.
+method_overrides:
+  bayesian:
+    scoring_metrics: [inter_vel_diff]
+    required_tensors: [ode_eval_times, velocities, ensemble_velocities, vel_diff_scaling]
+
+available_tasks: [push_t, libero_10]
+implemented_methods: [rnd_oe, entropy, tc, logpzo, bayesian]
+available_rnd_models: [rnd_oe]

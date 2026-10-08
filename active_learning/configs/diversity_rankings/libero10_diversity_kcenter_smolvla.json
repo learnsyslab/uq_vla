@@ -1,0 +1,527 @@
+[
+{
+"episode_id": 6,
+"task_group": "libero_10",
+"task_id": 2,
+"instruction": "turn on the stove and put the moka pot on it",
+"frame_index": 0
+},
+{
+"episode_id": 190,
+"task_group": "libero_10",
+"task_id": 4,
+"instruction": "put the white mug on the left plate and put the yellow and white mug on the right plate",
+"frame_index": 0
+},
+{
+"episode_id": 299,
+"task_group": "libero_10",
+"task_id": 5,
+"instruction": "pick up the book and place it in the back compartment of the caddy",
+"frame_index": 0
+},
+{
+"episode_id": 181,
+"task_group": "libero_10",
+"task_id": 0,
+"instruction": "put both the alphabet soup and the tomato sauce in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 371,
+"task_group": "libero_10",
+"task_id": 3,
+"instruction": "put the black bowl in the bottom drawer of the cabinet and close it",
+"frame_index": 0
+},
+{
+"episode_id": 282,
+"task_group": "libero_10",
+"task_id": 9,
+"instruction": "put the yellow and white mug in the microwave and close it",
+"frame_index": 0
+},
+{
+"episode_id": 209,
+"task_group": "libero_10",
+"task_id": 5,
+"instruction": "pick up the book and place it in the back compartment of the caddy",
+"frame_index": 0
+},
+{
+"episode_id": 223,
+"task_group": "libero_10",
+"task_id": 7,
+"instruction": "put both the alphabet soup and the cream cheese box in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 11,
+"task_group": "libero_10",
+"task_id": 6,
+"instruction": "put the white mug on the plate and put the chocolate pudding to the right of the plate",
+"frame_index": 0
+},
+{
+"episode_id": 149,
+"task_group": "libero_10",
+"task_id": 8,
+"instruction": "put both moka pots on the stove",
+"frame_index": 0
+},
+{
+"episode_id": 180,
+"task_group": "libero_10",
+"task_id": 5,
+"instruction": "pick up the book and place it in the back compartment of the caddy",
+"frame_index": 0
+},
+{
+"episode_id": 352,
+"task_group": "libero_10",
+"task_id": 0,
+"instruction": "put both the alphabet soup and the tomato sauce in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 312,
+"task_group": "libero_10",
+"task_id": 9,
+"instruction": "put the yellow and white mug in the microwave and close it",
+"frame_index": 0
+},
+{
+"episode_id": 161,
+"task_group": "libero_10",
+"task_id": 7,
+"instruction": "put both the alphabet soup and the cream cheese box in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 304,
+"task_group": "libero_10",
+"task_id": 3,
+"instruction": "put the black bowl in the bottom drawer of the cabinet and close it",
+"frame_index": 0
+},
+{
+"episode_id": 75,
+"task_group": "libero_10",
+"task_id": 3,
+"instruction": "put the black bowl in the bottom drawer of the cabinet and close it",
+"frame_index": 0
+},
+{
+"episode_id": 61,
+"task_group": "libero_10",
+"task_id": 5,
+"instruction": "pick up the book and place it in the back compartment of the caddy",
+"frame_index": 0
+},
+{
+"episode_id": 302,
+"task_group": "libero_10",
+"task_id": 6,
+"instruction": "put the white mug on the plate and put the chocolate pudding to the right of the plate",
+"frame_index": 0
+},
+{
+"episode_id": 147,
+"task_group": "libero_10",
+"task_id": 5,
+"instruction": "pick up the book and place it in the back compartment of the caddy",
+"frame_index": 0
+},
+{
+"episode_id": 338,
+"task_group": "libero_10",
+"task_id": 3,
+"instruction": "put the black bowl in the bottom drawer of the cabinet and close it",
+"frame_index": 0
+},
+{
+"episode_id": 145,
+"task_group": "libero_10",
+"task_id": 9,
+"instruction": "put the yellow and white mug in the microwave and close it",
+"frame_index": 0
+},
+{
+"episode_id": 208,
+"task_group": "libero_10",
+"task_id": 7,
+"instruction": "put both the alphabet soup and the cream cheese box in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 273,
+"task_group": "libero_10",
+"task_id": 1,
+"instruction": "put both the cream cheese box and the butter in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 49,
+"task_group": "libero_10",
+"task_id": 2,
+"instruction": "turn on the stove and put the moka pot on it",
+"frame_index": 0
+},
+{
+"episode_id": 246,
+"task_group": "libero_10",
+"task_id": 7,
+"instruction": "put both the alphabet soup and the cream cheese box in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 375,
+"task_group": "libero_10",
+"task_id": 3,
+"instruction": "put the black bowl in the bottom drawer of the cabinet and close it",
+"frame_index": 0
+},
+{
+"episode_id": 192,
+"task_group": "libero_10",
+"task_id": 3,
+"instruction": "put the black bowl in the bottom drawer of the cabinet and close it",
+"frame_index": 0
+},
+{
+"episode_id": 291,
+"task_group": "libero_10",
+"task_id": 0,
+"instruction": "put both the alphabet soup and the tomato sauce in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 204,
+"task_group": "libero_10",
+"task_id": 8,
+"instruction": "put both moka pots on the stove",
+"frame_index": 0
+},
+{
+"episode_id": 178,
+"task_group": "libero_10",
+"task_id": 9,
+"instruction": "put the yellow and white mug in the microwave and close it",
+"frame_index": 0
+},
+{
+"episode_id": 229,
+"task_group": "libero_10",
+"task_id": 5,
+"instruction": "pick up the book and place it in the back compartment of the caddy",
+"frame_index": 0
+},
+{
+"episode_id": 377,
+"task_group": "libero_10",
+"task_id": 3,
+"instruction": "put the black bowl in the bottom drawer of the cabinet and close it",
+"frame_index": 0
+},
+{
+"episode_id": 276,
+"task_group": "libero_10",
+"task_id": 9,
+"instruction": "put the yellow and white mug in the microwave and close it",
+"frame_index": 0
+},
+{
+"episode_id": 366,
+"task_group": "libero_10",
+"task_id": 5,
+"instruction": "pick up the book and place it in the back compartment of the caddy",
+"frame_index": 0
+},
+{
+"episode_id": 254,
+"task_group": "libero_10",
+"task_id": 3,
+"instruction": "put the black bowl in the bottom drawer of the cabinet and close it",
+"frame_index": 0
+},
+{
+"episode_id": 108,
+"task_group": "libero_10",
+"task_id": 6,
+"instruction": "put the white mug on the plate and put the chocolate pudding to the right of the plate",
+"frame_index": 0
+},
+{
+"episode_id": 41,
+"task_group": "libero_10",
+"task_id": 7,
+"instruction": "put both the alphabet soup and the cream cheese box in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 309,
+"task_group": "libero_10",
+"task_id": 4,
+"instruction": "put the white mug on the left plate and put the yellow and white mug on the right plate",
+"frame_index": 0
+},
+{
+"episode_id": 26,
+"task_group": "libero_10",
+"task_id": 0,
+"instruction": "put both the alphabet soup and the tomato sauce in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 373,
+"task_group": "libero_10",
+"task_id": 7,
+"instruction": "put both the alphabet soup and the cream cheese box in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 112,
+"task_group": "libero_10",
+"task_id": 3,
+"instruction": "put the black bowl in the bottom drawer of the cabinet and close it",
+"frame_index": 0
+},
+{
+"episode_id": 298,
+"task_group": "libero_10",
+"task_id": 5,
+"instruction": "pick up the book and place it in the back compartment of the caddy",
+"frame_index": 0
+},
+{
+"episode_id": 349,
+"task_group": "libero_10",
+"task_id": 5,
+"instruction": "pick up the book and place it in the back compartment of the caddy",
+"frame_index": 0
+},
+{
+"episode_id": 376,
+"task_group": "libero_10",
+"task_id": 8,
+"instruction": "put both moka pots on the stove",
+"frame_index": 0
+},
+{
+"episode_id": 50,
+"task_group": "libero_10",
+"task_id": 2,
+"instruction": "turn on the stove and put the moka pot on it",
+"frame_index": 0
+},
+{
+"episode_id": 12,
+"task_group": "libero_10",
+"task_id": 1,
+"instruction": "put both the cream cheese box and the butter in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 313,
+"task_group": "libero_10",
+"task_id": 5,
+"instruction": "pick up the book and place it in the back compartment of the caddy",
+"frame_index": 0
+},
+{
+"episode_id": 87,
+"task_group": "libero_10",
+"task_id": 2,
+"instruction": "turn on the stove and put the moka pot on it",
+"frame_index": 0
+},
+{
+"episode_id": 353,
+"task_group": "libero_10",
+"task_id": 3,
+"instruction": "put the black bowl in the bottom drawer of the cabinet and close it",
+"frame_index": 0
+},
+{
+"episode_id": 331,
+"task_group": "libero_10",
+"task_id": 7,
+"instruction": "put both the alphabet soup and the cream cheese box in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 186,
+"task_group": "libero_10",
+"task_id": 9,
+"instruction": "put the yellow and white mug in the microwave and close it",
+"frame_index": 0
+},
+{
+"episode_id": 234,
+"task_group": "libero_10",
+"task_id": 0,
+"instruction": "put both the alphabet soup and the tomato sauce in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 66,
+"task_group": "libero_10",
+"task_id": 2,
+"instruction": "turn on the stove and put the moka pot on it",
+"frame_index": 0
+},
+{
+"episode_id": 255,
+"task_group": "libero_10",
+"task_id": 3,
+"instruction": "put the black bowl in the bottom drawer of the cabinet and close it",
+"frame_index": 0
+},
+{
+"episode_id": 337,
+"task_group": "libero_10",
+"task_id": 3,
+"instruction": "put the black bowl in the bottom drawer of the cabinet and close it",
+"frame_index": 0
+},
+{
+"episode_id": 77,
+"task_group": "libero_10",
+"task_id": 0,
+"instruction": "put both the alphabet soup and the tomato sauce in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 89,
+"task_group": "libero_10",
+"task_id": 3,
+"instruction": "put the black bowl in the bottom drawer of the cabinet and close it",
+"frame_index": 0
+},
+{
+"episode_id": 274,
+"task_group": "libero_10",
+"task_id": 3,
+"instruction": "put the black bowl in the bottom drawer of the cabinet and close it",
+"frame_index": 0
+},
+{
+"episode_id": 45,
+"task_group": "libero_10",
+"task_id": 2,
+"instruction": "turn on the stove and put the moka pot on it",
+"frame_index": 0
+},
+{
+"episode_id": 197,
+"task_group": "libero_10",
+"task_id": 6,
+"instruction": "put the white mug on the plate and put the chocolate pudding to the right of the plate",
+"frame_index": 0
+},
+{
+"episode_id": 189,
+"task_group": "libero_10",
+"task_id": 3,
+"instruction": "put the black bowl in the bottom drawer of the cabinet and close it",
+"frame_index": 0
+},
+{
+"episode_id": 81,
+"task_group": "libero_10",
+"task_id": 5,
+"instruction": "pick up the book and place it in the back compartment of the caddy",
+"frame_index": 0
+},
+{
+"episode_id": 256,
+"task_group": "libero_10",
+"task_id": 7,
+"instruction": "put both the alphabet soup and the cream cheese box in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 164,
+"task_group": "libero_10",
+"task_id": 9,
+"instruction": "put the yellow and white mug in the microwave and close it",
+"frame_index": 0
+},
+{
+"episode_id": 7,
+"task_group": "libero_10",
+"task_id": 7,
+"instruction": "put both the alphabet soup and the cream cheese box in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 193,
+"task_group": "libero_10",
+"task_id": 9,
+"instruction": "put the yellow and white mug in the microwave and close it",
+"frame_index": 0
+},
+{
+"episode_id": 74,
+"task_group": "libero_10",
+"task_id": 7,
+"instruction": "put both the alphabet soup and the cream cheese box in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 174,
+"task_group": "libero_10",
+"task_id": 7,
+"instruction": "put both the alphabet soup and the cream cheese box in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 63,
+"task_group": "libero_10",
+"task_id": 7,
+"instruction": "put both the alphabet soup and the cream cheese box in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 76,
+"task_group": "libero_10",
+"task_id": 1,
+"instruction": "put both the cream cheese box and the butter in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 342,
+"task_group": "libero_10",
+"task_id": 9,
+"instruction": "put the yellow and white mug in the microwave and close it",
+"frame_index": 0
+},
+{
+"episode_id": 151,
+"task_group": "libero_10",
+"task_id": 3,
+"instruction": "put the black bowl in the bottom drawer of the cabinet and close it",
+"frame_index": 0
+},
+{
+"episode_id": 258,
+"task_group": "libero_10",
+"task_id": 5,
+"instruction": "pick up the book and place it in the back compartment of the caddy",
+"frame_index": 0
+},
+{
+"episode_id": 275,
+"task_group": "libero_10",
+"task_id": 7,
+"instruction": "put both the alphabet soup and the cream cheese box in the basket",
+"frame_index": 0
+},
+{
+"episode_id": 105,
+"task_group": "libero_10",
+"task_id": 4,
+"instruction": "put the white mug on the left plate and put the yellow and white mug on the right plate",
+"frame_index": 0
+}
+]

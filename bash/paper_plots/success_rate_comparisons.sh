@@ -1,1 +1,0 @@
-.venv/bin/python scripts/paper_plots/libero_leak3_paper.py 2>&1 | grep "geq"

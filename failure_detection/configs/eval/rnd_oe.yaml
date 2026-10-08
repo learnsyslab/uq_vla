@@ -1,0 +1,23 @@
+defaults:
+  - base
+  - rnd_parameters
+  
+model_name: rnd_oe
+
+required_tensors:
+  - "obs_embeddings"
+# No action batch handling for RND-Oe
+action_batch_handling: 
+
+normalize_tensors: 
+  obs_embeddings: False
+
+rnd_train: 
+  stop_when_val_to_train_ratio: 5 # Stop when the validation to training loss ratio is larger than this, 0 means never stop
+  calibration_train_fraction: 0.5
+  calibration_split_seed: 1
+  overwrite: True
+
+
+
+

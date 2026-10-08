@@ -1,0 +1,23 @@
+defaults:
+  - base
+# window_sizes: [1, 3, 5, "all"]  # [1, 5, "all"]
+backtrack_steps: 1 # Number of steps to backtrack for evaluation (1 take last action prediction)
+history_length: 2 # Number of steps to include in the history
+
+required_tensors:
+  - "action_preds"
+
+required_actions:
+  - "position"
+optional_actions: []
+  
+error_function:
+  name: "mmd_rbf"  
+  mmd_rbf:
+    description: "MMD using RBF kernel"
+    gamma: "median"
+
+hparams:
+  model:
+    backtrack_steps: ${eval.backtrack_steps}
+    error_function: ${eval.error_function}

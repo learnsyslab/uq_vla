@@ -1,0 +1,27 @@
+defaults:
+  - base
+
+# Which Bayesian scorer models to evaluate
+scorer_types: [ensemble]
+
+num_scorers: 2
+
+# Which uncertainty scoring metrics to evaluate for each scorer
+scoring_metrics: [inter_vel_diff, inter_vel_diff_2way]
+
+# Times at which terminal velocities are evaluated for the mode_distance metric
+mode_distance_eval_times: [0.0]
+
+# Times at which ODE integration velocities are evaluated for the inter_vel_diff metric
+inter_vel_diff_eval_times: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95]
+
+# Tensors that must be present in the dataset for evaluation
+required_tensors:
+  - ode_eval_times               # Times at which ODE states were recorded
+  - velocities                   # Reference model velocities during ODE integration
+  - ensemble_velocities          # Velocities during ODE integration under ensemble scorer
+  - vel_diff_scaling             # Scaling factors for intermediate velocity difference metric
+  - ensemble_inter_vel_diff_2way_scores # Precomputed two-way intermediate velocity difference scores
+
+required_actions: []
+optional_actions: []

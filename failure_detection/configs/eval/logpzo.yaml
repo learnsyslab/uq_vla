@@ -1,0 +1,73 @@
+defaults:
+  - base
+
+# logpZO (Xu et al., FAIL-Detect). Hyperparameters mirror the authors' reference
+# implementation, UQ_baselines/logpZO/train.py + UQ_baselines/CFM/net_CFM.py, except where
+# the FIPER protocol forces a deviation (see logpzo_eval.py module docstring).
+
+# --- training data: see eval/base.yaml (training_data / demo_embeddings_file), set per experiment ---
+
+# --- optimisation (reference: Adam 1e-4, batch 128, 200 epochs, last weights) ---
+learning_rate: 0.0001
+batch_size: 128
+# Memory only: each 128-sample optimizer step is processed in chunks of this size (gradient
+# accumulation). Same update as one 128-sample pass up to float summation order, so it is not
+# part of the checkpoint identity. Needed because LIBERO embeddings fold to ~3000-long sequences
+# for the conv UNet (~10 GB at batch 128); null = no chunking.
+micro_batch_size: 16
+# Epoch budget per training mode. demos: 200 mirrors the reference, whose 200 epochs run over the
+# policy's demonstrations (6k-26k embeddings on Push-T, ~30k in the reference). calibration: an
+# epoch is only 1-5 gradient steps over the 100-600 calibration embeddings, so 200 would be ~400
+# steps; 1000 is the budget the calibration-mode results were produced with.
+num_epochs:
+  demos: 200
+  calibration: 1000
+  calibration_pooled: 1000  # one fit per policy on ~10x the data; epochs kept, so ~10x the steps
+# "last": fixed budget, final weights, no validation split (reference).
+# "best_val": 90/10 split and best-validation snapshot (earlier FIPER implementation).
+model_selection: last
+
+# --- input layout (reference: adjust_xshape) ---
+# The flat embedding is zero-padded and folded into a (L, in_dim) sequence for the 1-D UNet.
+# The reference uses 10 for square/can and 20 for transport/tool_hang; it is a free choice.
+in_dim: 10
+# Continuous t ~ U(0,1) is fed to the network as (t * time_scale).long(): the sinusoidal
+# step embedding is built for integer diffusion steps and is nearly flat over [0, 1].
+time_scale: 100
+
+# --- network (reference: ConditionalUnet1D via net_CFM.get_unet) ---
+diffusion_step_embed_dim: 128
+down_dims: [256, 512, 1024]
+kernel_size: 5
+n_groups: 8
+cond_predict_scale: False
+
+logpzo_train:
+  # Cache the fitted model under <task_data_path>/logpzo_models/, per training mode. demos: one fit
+  # serves every calibration-size variant, worth the ~237 MB per task. calibration: the model depends
+  # on the calibration set anyway and fits are bit-reproducible, so a cache buys nothing for its disk.
+  cache:
+    demos: True
+    calibration: False
+    calibration_pooled: True  # the shared model must be reused by the other tasks of the run
+  # Force a retrain even when a checkpoint with matching hyperparameters exists.
+  overwrite: False
+
+required_tensors:
+  - "obs_embeddings"
+
+# Everything that changes the fitted weights must appear here: it is the checkpoint
+# identity, so a change retrains instead of silently reusing stale weights.
+hparams:
+  model:
+    learning_rate: ${eval.learning_rate}
+    batch_size: ${eval.batch_size}
+    num_epochs: ${eval.num_epochs}
+    model_selection: ${eval.model_selection}
+    in_dim: ${eval.in_dim}
+    time_scale: ${eval.time_scale}
+    diffusion_step_embed_dim: ${eval.diffusion_step_embed_dim}
+    down_dims: ${eval.down_dims}
+    kernel_size: ${eval.kernel_size}
+    n_groups: ${eval.n_groups}
+    cond_predict_scale: ${eval.cond_predict_scale}

@@ -1,0 +1,91 @@
+# SmolVLA active fine-tuning on LIBERO-10. Diversity: episodes taken in the order of a precomputed
+# SigLIP k-center-greedy ranking (scripts/active_learning/k_greedy.py).
+# 15 rounds x 5 episodes, replay 50/50 between D_pre and the selected episodes.
+
+dataset:
+  repo_id: HuggingFaceVLA/libero
+  libero_tasks:
+    libero_10: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+policy:
+  type: smolvla
+  device: cuda:0
+  pretrained_path: outputs/pretrain/smolvla_libero/seed_${SEED_A}/checkpoints/last/pretrained_model
+  optimizer_lr: 5.0e-5
+  scheduler_warmup_steps: 200
+  scheduler_decay_steps: 4000
+  scheduler_decay_lr: 5.0e-6
+
+paths:
+  env_file: .env
+  run_root: outputs/active_learning/smolvla
+  run_name: diversity_${SEED_PAIR}
+
+iteration:
+  total_rounds: 15
+  episodes_per_round: 5
+  bootstrap_selection_paths: []
+  warm_start_from_previous_round: true
+
+replay:
+  history_fraction: 0.5
+  new_fraction: 0.5
+  sampling_mode: weighted_pools
+  history_tasks:
+    libero_spatial: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    libero_object: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    libero_goal: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    libero_10: [0, 1, 2]
+  samples_per_epoch: 20000
+  replacement: true
+
+selection:
+  strategy: predefined_ranking
+  uncertainty_method: cross_bayesian
+  scorer_type: ensemble
+  scoring_metric: inter_vel_diff
+  num_action_samples: 5
+  observation_batch_size: 32
+  ensemble_model_paths:
+    - outputs/pretrain/smolvla_libero/seed_${SEED_A}/checkpoints/last/pretrained_model
+    - outputs/pretrain/smolvla_libero/seed_${SEED_B}/checkpoints/last/pretrained_model
+  candidate_tasks:
+    libero_10: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  task_selection_temperature: 0.0
+  task_weighted_episode_selection: top_k
+  predefined_ranking_path: configs/diversity_rankings/libero10_diversity_kcenter_smolvla.json
+  device: cuda:0
+  seed: 42                         # replaced per seed pair (seed_pairs.*.selection_seed)
+
+execution:
+  stages: [train]
+  resume: true
+  overwrite_existing_round: false
+  save_candidate_scores: true
+
+ensemble_training:
+  parallel_members: true          # one GPU per member
+  member_devices: [cuda:0, cuda:1]
+
+num_workers: 8
+batch_size: 32
+steps: 4000
+seed: 1000                        # replaced per seed pair (seed_pairs.*.seed)
+eval_freq: 0
+log_freq: 20
+save_checkpoint: true
+save_freq: 10000
+use_policy_training_preset: true
+reinitialize_selected_layers: false
+rename_map: {}
+
+wandb:
+  enable: false
+
+# One run per seed pair: pick it with --seed_pair=<name> (or SEED_PAIR=<name>). `members` are the
+# pretraining seeds of the two ensemble members (${SEED_A}, ${SEED_B} above); `seed` and
+# `selection_seed` are the training and selection seeds.
+seed_pairs:
+  s01: {members: [0, 1], seed: 1000, selection_seed: 42}
+  s23: {members: [2, 3], seed: 1001, selection_seed: 43}
+  s45: {members: [4, 5], seed: 1002, selection_seed: 44}

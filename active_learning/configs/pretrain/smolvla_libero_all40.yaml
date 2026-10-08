@@ -1,0 +1,26 @@
+# SmolVLA ensembles for the LIBERO-Plus failure-detection experiment: the same recipe as
+# smolvla_libero.yaml, but trained on ALL 40 tasks of HuggingFaceVLA/libero (LIBERO-Spatial, -Object,
+# -Goal and -10; 1693 episodes), so every LIBERO-10 task is in distribution. Seeds 0-5 form the three
+# ensembles s01, s23, s45:
+#   python -m lerobot.scripts.lerobot_train --config_path=configs/pretrain/smolvla_libero_all40.yaml \
+#       --seed=<k> --output_dir=outputs/pretrain/smolvla_libero_all40/seed_<k>
+dataset:
+  repo_id: HuggingFaceVLA/libero
+  video_backend: pyav
+
+policy:
+  type: smolvla
+  device: cuda
+  push_to_hub: false
+
+steps: 30000
+batch_size: 32
+num_workers: 24
+enable_val_loss: false
+eval_freq: 0
+save_freq: 10000
+log_freq: 100
+seed: 0
+wandb:
+  enable: false
+job_name: smolvla_libero_all40

@@ -1,0 +1,1856 @@
+[
+  {
+    "episode_id": 175,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 21542,
+    "rank": 0,
+    "coverage_score": 0.0
+  },
+  {
+    "episode_id": 4,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 579,
+    "rank": 1,
+    "coverage_score": 14.187621116638184
+  },
+  {
+    "episode_id": 154,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 18942,
+    "rank": 2,
+    "coverage_score": 10.356513023376465
+  },
+  {
+    "episode_id": 57,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 7102,
+    "rank": 3,
+    "coverage_score": 9.22712516784668
+  },
+  {
+    "episode_id": 91,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 10976,
+    "rank": 4,
+    "coverage_score": 8.776007652282715
+  },
+  {
+    "episode_id": 43,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 5425,
+    "rank": 5,
+    "coverage_score": 8.615518569946289
+  },
+  {
+    "episode_id": 44,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 5543,
+    "rank": 6,
+    "coverage_score": 8.596403121948242
+  },
+  {
+    "episode_id": 22,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 2855,
+    "rank": 7,
+    "coverage_score": 7.838066101074219
+  },
+  {
+    "episode_id": 89,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 10729,
+    "rank": 8,
+    "coverage_score": 7.7196455001831055
+  },
+  {
+    "episode_id": 176,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 21688,
+    "rank": 9,
+    "coverage_score": 7.612514972686768
+  },
+  {
+    "episode_id": 204,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 25468,
+    "rank": 10,
+    "coverage_score": 7.461272239685059
+  },
+  {
+    "episode_id": 5,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 738,
+    "rank": 11,
+    "coverage_score": 7.289765357971191
+  },
+  {
+    "episode_id": 152,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 18691,
+    "rank": 12,
+    "coverage_score": 7.259893417358398
+  },
+  {
+    "episode_id": 160,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 19538,
+    "rank": 13,
+    "coverage_score": 7.2209391593933105
+  },
+  {
+    "episode_id": 49,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 6152,
+    "rank": 14,
+    "coverage_score": 7.114597797393799
+  },
+  {
+    "episode_id": 112,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 13329,
+    "rank": 15,
+    "coverage_score": 7.071661472320557
+  },
+  {
+    "episode_id": 11,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 1535,
+    "rank": 16,
+    "coverage_score": 6.905442237854004
+  },
+  {
+    "episode_id": 196,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 24342,
+    "rank": 17,
+    "coverage_score": 6.707535266876221
+  },
+  {
+    "episode_id": 189,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 23314,
+    "rank": 18,
+    "coverage_score": 6.704958438873291
+  },
+  {
+    "episode_id": 128,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 15473,
+    "rank": 19,
+    "coverage_score": 6.650640964508057
+  },
+  {
+    "episode_id": 187,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 23064,
+    "rank": 20,
+    "coverage_score": 6.581228256225586
+  },
+  {
+    "episode_id": 58,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 7185,
+    "rank": 21,
+    "coverage_score": 6.476865768432617
+  },
+  {
+    "episode_id": 139,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 16975,
+    "rank": 22,
+    "coverage_score": 6.43051290512085
+  },
+  {
+    "episode_id": 131,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 15877,
+    "rank": 23,
+    "coverage_score": 6.412299633026123
+  },
+  {
+    "episode_id": 155,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 19041,
+    "rank": 24,
+    "coverage_score": 6.412167072296143
+  },
+  {
+    "episode_id": 183,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 22540,
+    "rank": 25,
+    "coverage_score": 6.342857837677002
+  },
+  {
+    "episode_id": 59,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 7303,
+    "rank": 26,
+    "coverage_score": 6.334770202636719
+  },
+  {
+    "episode_id": 79,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 9705,
+    "rank": 27,
+    "coverage_score": 6.330195426940918
+  },
+  {
+    "episode_id": 75,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 9220,
+    "rank": 28,
+    "coverage_score": 6.267025947570801
+  },
+  {
+    "episode_id": 191,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 23678,
+    "rank": 29,
+    "coverage_score": 6.243307113647461
+  },
+  {
+    "episode_id": 92,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 11077,
+    "rank": 30,
+    "coverage_score": 6.229679584503174
+  },
+  {
+    "episode_id": 113,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 13400,
+    "rank": 31,
+    "coverage_score": 6.205853462219238
+  },
+  {
+    "episode_id": 62,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 7635,
+    "rank": 32,
+    "coverage_score": 6.142189025878906
+  },
+  {
+    "episode_id": 129,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 15569,
+    "rank": 33,
+    "coverage_score": 6.126648902893066
+  },
+  {
+    "episode_id": 115,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 13714,
+    "rank": 34,
+    "coverage_score": 6.104865550994873
+  },
+  {
+    "episode_id": 119,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 14207,
+    "rank": 35,
+    "coverage_score": 6.0775604248046875
+  },
+  {
+    "episode_id": 102,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 12053,
+    "rank": 36,
+    "coverage_score": 6.063482284545898
+  },
+  {
+    "episode_id": 171,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 20972,
+    "rank": 37,
+    "coverage_score": 6.002034664154053
+  },
+  {
+    "episode_id": 24,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 3074,
+    "rank": 38,
+    "coverage_score": 5.946791172027588
+  },
+  {
+    "episode_id": 16,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 2209,
+    "rank": 39,
+    "coverage_score": 5.898266315460205
+  },
+  {
+    "episode_id": 84,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 10238,
+    "rank": 40,
+    "coverage_score": 5.895381450653076
+  },
+  {
+    "episode_id": 143,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 17500,
+    "rank": 41,
+    "coverage_score": 5.851816177368164
+  },
+  {
+    "episode_id": 67,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 8178,
+    "rank": 42,
+    "coverage_score": 5.6784234046936035
+  },
+  {
+    "episode_id": 178,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 21904,
+    "rank": 43,
+    "coverage_score": 5.662765979766846
+  },
+  {
+    "episode_id": 136,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 16572,
+    "rank": 44,
+    "coverage_score": 5.661078929901123
+  },
+  {
+    "episode_id": 30,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 3797,
+    "rank": 45,
+    "coverage_score": 5.644002914428711
+  },
+  {
+    "episode_id": 167,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 20483,
+    "rank": 46,
+    "coverage_score": 5.641909599304199
+  },
+  {
+    "episode_id": 153,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 18845,
+    "rank": 47,
+    "coverage_score": 5.606475353240967
+  },
+  {
+    "episode_id": 78,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 9529,
+    "rank": 48,
+    "coverage_score": 5.6044182777404785
+  },
+  {
+    "episode_id": 100,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 11844,
+    "rank": 49,
+    "coverage_score": 5.601845741271973
+  },
+  {
+    "episode_id": 164,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 20059,
+    "rank": 50,
+    "coverage_score": 5.580345630645752
+  },
+  {
+    "episode_id": 25,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 3172,
+    "rank": 51,
+    "coverage_score": 5.5652666091918945
+  },
+  {
+    "episode_id": 50,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 6235,
+    "rank": 52,
+    "coverage_score": 5.499266624450684
+  },
+  {
+    "episode_id": 124,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 14854,
+    "rank": 53,
+    "coverage_score": 5.484144687652588
+  },
+  {
+    "episode_id": 198,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 24614,
+    "rank": 54,
+    "coverage_score": 5.479398727416992
+  },
+  {
+    "episode_id": 200,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 24892,
+    "rank": 55,
+    "coverage_score": 5.460897445678711
+  },
+  {
+    "episode_id": 205,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 25601,
+    "rank": 56,
+    "coverage_score": 5.43979024887085
+  },
+  {
+    "episode_id": 169,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 20708,
+    "rank": 57,
+    "coverage_score": 5.384632587432861
+  },
+  {
+    "episode_id": 88,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 10648,
+    "rank": 58,
+    "coverage_score": 5.375438213348389
+  },
+  {
+    "episode_id": 19,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 2523,
+    "rank": 59,
+    "coverage_score": 5.372323513031006
+  },
+  {
+    "episode_id": 140,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 17080,
+    "rank": 60,
+    "coverage_score": 5.350560665130615
+  },
+  {
+    "episode_id": 166,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 20378,
+    "rank": 61,
+    "coverage_score": 5.3160719871521
+  },
+  {
+    "episode_id": 95,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 11286,
+    "rank": 62,
+    "coverage_score": 5.245205402374268
+  },
+  {
+    "episode_id": 90,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 10867,
+    "rank": 63,
+    "coverage_score": 5.240966320037842
+  },
+  {
+    "episode_id": 121,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 14393,
+    "rank": 64,
+    "coverage_score": 5.205460071563721
+  },
+  {
+    "episode_id": 98,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 11694,
+    "rank": 65,
+    "coverage_score": 5.200992107391357
+  },
+  {
+    "episode_id": 74,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 9102,
+    "rank": 66,
+    "coverage_score": 5.195017337799072
+  },
+  {
+    "episode_id": 3,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 420,
+    "rank": 67,
+    "coverage_score": 5.1577277183532715
+  },
+  {
+    "episode_id": 165,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 20185,
+    "rank": 68,
+    "coverage_score": 5.157660007476807
+  },
+  {
+    "episode_id": 148,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 18211,
+    "rank": 69,
+    "coverage_score": 5.146118640899658
+  },
+  {
+    "episode_id": 181,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 22377,
+    "rank": 70,
+    "coverage_score": 5.1096062660217285
+  },
+  {
+    "episode_id": 188,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 23209,
+    "rank": 71,
+    "coverage_score": 5.105745792388916
+  },
+  {
+    "episode_id": 151,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 18539,
+    "rank": 72,
+    "coverage_score": 5.105137348175049
+  },
+  {
+    "episode_id": 107,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 12646,
+    "rank": 73,
+    "coverage_score": 5.102820873260498
+  },
+  {
+    "episode_id": 8,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 1133,
+    "rank": 74,
+    "coverage_score": 5.101436138153076
+  },
+  {
+    "episode_id": 87,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 10533,
+    "rank": 75,
+    "coverage_score": 5.099621295928955
+  },
+  {
+    "episode_id": 64,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 7842,
+    "rank": 76,
+    "coverage_score": 5.08155632019043
+  },
+  {
+    "episode_id": 60,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 7425,
+    "rank": 77,
+    "coverage_score": 5.078302383422852
+  },
+  {
+    "episode_id": 109,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 12955,
+    "rank": 78,
+    "coverage_score": 5.062514781951904
+  },
+  {
+    "episode_id": 94,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 11219,
+    "rank": 79,
+    "coverage_score": 5.047650337219238
+  },
+  {
+    "episode_id": 162,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 19822,
+    "rank": 80,
+    "coverage_score": 5.018105506896973
+  },
+  {
+    "episode_id": 173,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 21165,
+    "rank": 81,
+    "coverage_score": 4.995604515075684
+  },
+  {
+    "episode_id": 29,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 3682,
+    "rank": 82,
+    "coverage_score": 4.993155479431152
+  },
+  {
+    "episode_id": 7,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 964,
+    "rank": 83,
+    "coverage_score": 4.983241081237793
+  },
+  {
+    "episode_id": 106,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 12520,
+    "rank": 84,
+    "coverage_score": 4.9817070960998535
+  },
+  {
+    "episode_id": 14,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 1949,
+    "rank": 85,
+    "coverage_score": 4.969037055969238
+  },
+  {
+    "episode_id": 41,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 5216,
+    "rank": 86,
+    "coverage_score": 4.953485488891602
+  },
+  {
+    "episode_id": 105,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 12445,
+    "rank": 87,
+    "coverage_score": 4.948209285736084
+  },
+  {
+    "episode_id": 0,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 0,
+    "rank": 88,
+    "coverage_score": 4.932250022888184
+  },
+  {
+    "episode_id": 125,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 15002,
+    "rank": 89,
+    "coverage_score": 4.930387020111084
+  },
+  {
+    "episode_id": 179,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 22052,
+    "rank": 90,
+    "coverage_score": 4.9296698570251465
+  },
+  {
+    "episode_id": 159,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 19444,
+    "rank": 91,
+    "coverage_score": 4.92400598526001
+  },
+  {
+    "episode_id": 52,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 6377,
+    "rank": 92,
+    "coverage_score": 4.914491176605225
+  },
+  {
+    "episode_id": 69,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 8372,
+    "rank": 93,
+    "coverage_score": 4.912060737609863
+  },
+  {
+    "episode_id": 81,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 9892,
+    "rank": 94,
+    "coverage_score": 4.894080638885498
+  },
+  {
+    "episode_id": 96,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 11393,
+    "rank": 95,
+    "coverage_score": 4.867033958435059
+  },
+  {
+    "episode_id": 73,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 8990,
+    "rank": 96,
+    "coverage_score": 4.862311363220215
+  },
+  {
+    "episode_id": 26,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 3305,
+    "rank": 97,
+    "coverage_score": 4.826498508453369
+  },
+  {
+    "episode_id": 127,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 15332,
+    "rank": 98,
+    "coverage_score": 4.800503730773926
+  },
+  {
+    "episode_id": 186,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 22972,
+    "rank": 99,
+    "coverage_score": 4.795989513397217
+  },
+  {
+    "episode_id": 63,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 7702,
+    "rank": 100,
+    "coverage_score": 4.79410457611084
+  },
+  {
+    "episode_id": 170,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 20842,
+    "rank": 101,
+    "coverage_score": 4.744034767150879
+  },
+  {
+    "episode_id": 142,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 17378,
+    "rank": 102,
+    "coverage_score": 4.710750102996826
+  },
+  {
+    "episode_id": 185,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 22908,
+    "rank": 103,
+    "coverage_score": 4.696202278137207
+  },
+  {
+    "episode_id": 39,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 4978,
+    "rank": 104,
+    "coverage_score": 4.689632415771484
+  },
+  {
+    "episode_id": 192,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 23837,
+    "rank": 105,
+    "coverage_score": 4.679023742675781
+  },
+  {
+    "episode_id": 163,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 19983,
+    "rank": 106,
+    "coverage_score": 4.677277565002441
+  },
+  {
+    "episode_id": 48,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 6014,
+    "rank": 107,
+    "coverage_score": 4.661064147949219
+  },
+  {
+    "episode_id": 35,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 4386,
+    "rank": 108,
+    "coverage_score": 4.6587700843811035
+  },
+  {
+    "episode_id": 150,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 18426,
+    "rank": 109,
+    "coverage_score": 4.631052494049072
+  },
+  {
+    "episode_id": 130,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 15725,
+    "rank": 110,
+    "coverage_score": 4.628385066986084
+  },
+  {
+    "episode_id": 172,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 21087,
+    "rank": 111,
+    "coverage_score": 4.6129865646362305
+  },
+  {
+    "episode_id": 82,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 10005,
+    "rank": 112,
+    "coverage_score": 4.601767539978027
+  },
+  {
+    "episode_id": 80,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 9775,
+    "rank": 113,
+    "coverage_score": 4.595041275024414
+  },
+  {
+    "episode_id": 141,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 17192,
+    "rank": 114,
+    "coverage_score": 4.593647003173828
+  },
+  {
+    "episode_id": 122,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 14530,
+    "rank": 115,
+    "coverage_score": 4.581482887268066
+  },
+  {
+    "episode_id": 135,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 16469,
+    "rank": 116,
+    "coverage_score": 4.5804123878479
+  },
+  {
+    "episode_id": 27,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 3463,
+    "rank": 117,
+    "coverage_score": 4.572782039642334
+  },
+  {
+    "episode_id": 199,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 24739,
+    "rank": 118,
+    "coverage_score": 4.570824146270752
+  },
+  {
+    "episode_id": 149,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 18289,
+    "rank": 119,
+    "coverage_score": 4.570411205291748
+  },
+  {
+    "episode_id": 182,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 22484,
+    "rank": 120,
+    "coverage_score": 4.567736625671387
+  },
+  {
+    "episode_id": 137,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 16697,
+    "rank": 121,
+    "coverage_score": 4.5591254234313965
+  },
+  {
+    "episode_id": 77,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 9407,
+    "rank": 122,
+    "coverage_score": 4.506027698516846
+  },
+  {
+    "episode_id": 72,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 8842,
+    "rank": 123,
+    "coverage_score": 4.501866817474365
+  },
+  {
+    "episode_id": 120,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 14328,
+    "rank": 124,
+    "coverage_score": 4.4932098388671875
+  },
+  {
+    "episode_id": 93,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 11155,
+    "rank": 125,
+    "coverage_score": 4.484721660614014
+  },
+  {
+    "episode_id": 184,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 22679,
+    "rank": 126,
+    "coverage_score": 4.4834980964660645
+  },
+  {
+    "episode_id": 40,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 5077,
+    "rank": 127,
+    "coverage_score": 4.481629371643066
+  },
+  {
+    "episode_id": 132,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 16060,
+    "rank": 128,
+    "coverage_score": 4.4749345779418945
+  },
+  {
+    "episode_id": 108,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 12843,
+    "rank": 129,
+    "coverage_score": 4.474915981292725
+  },
+  {
+    "episode_id": 195,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 24242,
+    "rank": 130,
+    "coverage_score": 4.469329357147217
+  },
+  {
+    "episode_id": 101,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 11961,
+    "rank": 131,
+    "coverage_score": 4.454566478729248
+  },
+  {
+    "episode_id": 36,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 4529,
+    "rank": 132,
+    "coverage_score": 4.432750701904297
+  },
+  {
+    "episode_id": 202,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 25151,
+    "rank": 133,
+    "coverage_score": 4.418764114379883
+  },
+  {
+    "episode_id": 13,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 1824,
+    "rank": 134,
+    "coverage_score": 4.406580924987793
+  },
+  {
+    "episode_id": 144,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 17646,
+    "rank": 135,
+    "coverage_score": 4.3681159019470215
+  },
+  {
+    "episode_id": 47,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 5905,
+    "rank": 136,
+    "coverage_score": 4.35352897644043
+  },
+  {
+    "episode_id": 110,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 13100,
+    "rank": 137,
+    "coverage_score": 4.3365068435668945
+  },
+  {
+    "episode_id": 133,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 16215,
+    "rank": 138,
+    "coverage_score": 4.335289001464844
+  },
+  {
+    "episode_id": 99,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 11762,
+    "rank": 139,
+    "coverage_score": 4.330702304840088
+  },
+  {
+    "episode_id": 85,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 10318,
+    "rank": 140,
+    "coverage_score": 4.3122239112854
+  },
+  {
+    "episode_id": 2,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 279,
+    "rank": 141,
+    "coverage_score": 4.301541805267334
+  },
+  {
+    "episode_id": 65,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 7945,
+    "rank": 142,
+    "coverage_score": 4.284786224365234
+  },
+  {
+    "episode_id": 104,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 12308,
+    "rank": 143,
+    "coverage_score": 4.282940864562988
+  },
+  {
+    "episode_id": 17,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 2335,
+    "rank": 144,
+    "coverage_score": 4.2440009117126465
+  },
+  {
+    "episode_id": 1,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 161,
+    "rank": 145,
+    "coverage_score": 4.235975742340088
+  },
+  {
+    "episode_id": 46,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 5822,
+    "rank": 146,
+    "coverage_score": 4.235271453857422
+  },
+  {
+    "episode_id": 180,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 22207,
+    "rank": 147,
+    "coverage_score": 4.220160961151123
+  },
+  {
+    "episode_id": 116,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 13811,
+    "rank": 148,
+    "coverage_score": 4.2196502685546875
+  },
+  {
+    "episode_id": 18,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 2437,
+    "rank": 149,
+    "coverage_score": 4.194601058959961
+  },
+  {
+    "episode_id": 61,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 7485,
+    "rank": 150,
+    "coverage_score": 4.167342662811279
+  },
+  {
+    "episode_id": 23,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 2964,
+    "rank": 151,
+    "coverage_score": 4.156642436981201
+  },
+  {
+    "episode_id": 134,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 16346,
+    "rank": 152,
+    "coverage_score": 4.1551103591918945
+  },
+  {
+    "episode_id": 157,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 19225,
+    "rank": 153,
+    "coverage_score": 4.126091480255127
+  },
+  {
+    "episode_id": 111,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 13231,
+    "rank": 154,
+    "coverage_score": 4.124554634094238
+  },
+  {
+    "episode_id": 31,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 3881,
+    "rank": 155,
+    "coverage_score": 4.123795509338379
+  },
+  {
+    "episode_id": 15,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 2056,
+    "rank": 156,
+    "coverage_score": 4.097837448120117
+  },
+  {
+    "episode_id": 158,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 19339,
+    "rank": 157,
+    "coverage_score": 4.097636699676514
+  },
+  {
+    "episode_id": 6,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 895,
+    "rank": 158,
+    "coverage_score": 4.0926289558410645
+  },
+  {
+    "episode_id": 161,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 19685,
+    "rank": 159,
+    "coverage_score": 4.075537204742432
+  },
+  {
+    "episode_id": 146,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 17946,
+    "rank": 160,
+    "coverage_score": 4.042910575866699
+  },
+  {
+    "episode_id": 55,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 6891,
+    "rank": 161,
+    "coverage_score": 4.032623767852783
+  },
+  {
+    "episode_id": 203,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 25318,
+    "rank": 162,
+    "coverage_score": 4.028622627258301
+  },
+  {
+    "episode_id": 145,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 17779,
+    "rank": 163,
+    "coverage_score": 4.022634029388428
+  },
+  {
+    "episode_id": 9,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 1213,
+    "rank": 164,
+    "coverage_score": 4.009122371673584
+  },
+  {
+    "episode_id": 194,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 24147,
+    "rank": 165,
+    "coverage_score": 3.967444658279419
+  },
+  {
+    "episode_id": 138,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 16789,
+    "rank": 166,
+    "coverage_score": 3.9460060596466064
+  },
+  {
+    "episode_id": 147,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 18049,
+    "rank": 167,
+    "coverage_score": 3.9336533546447754
+  },
+  {
+    "episode_id": 34,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 4244,
+    "rank": 168,
+    "coverage_score": 3.9115993976593018
+  },
+  {
+    "episode_id": 32,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 3976,
+    "rank": 169,
+    "coverage_score": 3.9034430980682373
+  },
+  {
+    "episode_id": 70,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 8522,
+    "rank": 170,
+    "coverage_score": 3.8876519203186035
+  },
+  {
+    "episode_id": 51,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 6304,
+    "rank": 171,
+    "coverage_score": 3.846843957901001
+  },
+  {
+    "episode_id": 168,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 20623,
+    "rank": 172,
+    "coverage_score": 3.843815326690674
+  },
+  {
+    "episode_id": 177,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 21777,
+    "rank": 173,
+    "coverage_score": 3.8165132999420166
+  },
+  {
+    "episode_id": 114,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 13549,
+    "rank": 174,
+    "coverage_score": 3.79727840423584
+  },
+  {
+    "episode_id": 118,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 14105,
+    "rank": 175,
+    "coverage_score": 3.779554843902588
+  },
+  {
+    "episode_id": 53,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 6513,
+    "rank": 176,
+    "coverage_score": 3.7492854595184326
+  },
+  {
+    "episode_id": 156,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 19135,
+    "rank": 177,
+    "coverage_score": 3.7316863536834717
+  },
+  {
+    "episode_id": 12,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 1684,
+    "rank": 178,
+    "coverage_score": 3.723613977432251
+  },
+  {
+    "episode_id": 97,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 11583,
+    "rank": 179,
+    "coverage_score": 3.6997361183166504
+  },
+  {
+    "episode_id": 33,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 4124,
+    "rank": 180,
+    "coverage_score": 3.696298360824585
+  },
+  {
+    "episode_id": 10,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 1347,
+    "rank": 181,
+    "coverage_score": 3.6958630084991455
+  },
+  {
+    "episode_id": 37,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 4671,
+    "rank": 182,
+    "coverage_score": 3.6568775177001953
+  },
+  {
+    "episode_id": 174,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 21296,
+    "rank": 183,
+    "coverage_score": 3.643648862838745
+  },
+  {
+    "episode_id": 21,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 2740,
+    "rank": 184,
+    "coverage_score": 3.6028048992156982
+  },
+  {
+    "episode_id": 123,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 14649,
+    "rank": 185,
+    "coverage_score": 3.5910322666168213
+  },
+  {
+    "episode_id": 83,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 10099,
+    "rank": 186,
+    "coverage_score": 3.574025869369507
+  },
+  {
+    "episode_id": 86,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 10429,
+    "rank": 187,
+    "coverage_score": 3.549290895462036
+  },
+  {
+    "episode_id": 68,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 8282,
+    "rank": 188,
+    "coverage_score": 3.5429720878601074
+  },
+  {
+    "episode_id": 71,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 8708,
+    "rank": 189,
+    "coverage_score": 3.5246527194976807
+  },
+  {
+    "episode_id": 126,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 15161,
+    "rank": 190,
+    "coverage_score": 3.487990379333496
+  },
+  {
+    "episode_id": 42,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 5289,
+    "rank": 191,
+    "coverage_score": 3.483640193939209
+  },
+  {
+    "episode_id": 193,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 24022,
+    "rank": 192,
+    "coverage_score": 3.3639698028564453
+  },
+  {
+    "episode_id": 201,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 25059,
+    "rank": 193,
+    "coverage_score": 3.3242790699005127
+  },
+  {
+    "episode_id": 103,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 12167,
+    "rank": 194,
+    "coverage_score": 3.249042272567749
+  },
+  {
+    "episode_id": 56,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 6997,
+    "rank": 195,
+    "coverage_score": 3.2462198734283447
+  },
+  {
+    "episode_id": 38,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 4792,
+    "rank": 196,
+    "coverage_score": 3.243011474609375
+  },
+  {
+    "episode_id": 20,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 2598,
+    "rank": 197,
+    "coverage_score": 3.221676826477051
+  },
+  {
+    "episode_id": 76,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 9318,
+    "rank": 198,
+    "coverage_score": 3.1604530811309814
+  },
+  {
+    "episode_id": 117,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 13989,
+    "rank": 199,
+    "coverage_score": 3.1579365730285645
+  },
+  {
+    "episode_id": 66,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 8111,
+    "rank": 200,
+    "coverage_score": 3.1411187648773193
+  },
+  {
+    "episode_id": 197,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 24447,
+    "rank": 201,
+    "coverage_score": 3.124209403991699
+  },
+  {
+    "episode_id": 28,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 3575,
+    "rank": 202,
+    "coverage_score": 3.1200506687164307
+  },
+  {
+    "episode_id": 190,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 23474,
+    "rank": 203,
+    "coverage_score": 3.0701346397399902
+  },
+  {
+    "episode_id": 54,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 6686,
+    "rank": 204,
+    "coverage_score": 2.9083070755004883
+  },
+  {
+    "episode_id": 45,
+    "task_group": "pusht",
+    "task_id": 0,
+    "instruction": "",
+    "frame_index": 5670,
+    "rank": 205,
+    "coverage_score": 2.8961498737335205
+  }
+]

@@ -1,0 +1,45 @@
+name: libero_10
+description: Tasks from the LIBERO-10 suite
+type: simulation
+num_robots: 1
+
+environment:
+  name: libero_10
+  ts: 0.033
+  max_episode_steps: 520
+  fail_on_error: true
+  fail_after_steps: 520
+
+action_space:
+  action_type: continuous
+  actions:
+    dim: 7
+    action_mapping:
+      position: [0, 1, 2]
+      rotation: [3, 4, 5]
+      velocity:
+  action_pred:
+    format: (batch_size, prediction_horizon, action_dim)
+    action_prediction_horizon: 48
+    batch_size: 64
+    shape: (${task.action_space.action_pred.batch_size}, ${task.action_space.action_pred.action_prediction_horizon}, ${task.action_space.actions.dim})
+  action_execution_horizon: 24
+
+metadata:
+  task: ${task.name}
+  description: ${task.description}
+  num_robots: ${task.num_robots}
+  actions:
+    action_dim: ${task.action_space.actions.dim}
+    action_types: ${task.action_space.action_type}
+    action_mapping: ${task.action_space.actions.action_mapping}
+    action_pred_shape: ${task.action_space.action_pred.shape}
+    action_pred_format: ${task.action_space.action_pred.format}
+    action_execution_horizon: ${task.action_space.action_execution_horizon}
+    action_prediction_horizon: ${task.action_space.action_pred.action_prediction_horizon}
+  env:
+    name: ${task.environment.name}
+    ts: ${task.environment.ts}
+    max_episode_steps: ${task.environment.max_episode_steps}
+    fail_on_error: ${task.environment.fail_on_error}
+    fail_after_steps: ${task.environment.fail_after_steps}

@@ -1,0 +1,73 @@
+
+name: base
+description: "Base task configuration"
+type: "simulation"
+num_robots: 1
+
+environment:
+  name: "BaseEnv-v0"
+  ts: 0.1
+  max_episode_steps: 100
+  fail_on_error: true
+  fail_after_steps: 100
+
+observation_space:
+  observation_type: "rgb"
+  observation_shape: ${task.observation_space.rgb.shape}
+  rgb:
+    format: "(H,W,C)"
+    shape: (64, 64, 3)
+
+action_space:
+  action_type: "continuous"
+  actions:
+    dim: 4
+    action_bounds: 
+    action_mapping:
+      position: [0, 1, 2]
+      rotation: 
+      velocity: 
+  action_pred:
+    format: "(batch_size, prediction_horizon, action_dim)"
+    action_prediction_horizon: 16
+    batch_size: 256
+    shape: (${task.action_space.action_pred.batch_size}, ${task.action_space.action_pred.action_prediction_horizon}, ${task.action_space.actions.dim})
+  action_execution_horizon: 4
+  
+
+state_space:
+  state_dim: 3
+  state_types: 
+  state_bounds: 
+  state_mapping:
+    position: [0, 1, 2]
+    rotation: 
+    velocity: 
+
+metadata:
+  task: ${task.name}
+  description: ${task.description}
+  num_robots: ${task.num_robots}
+  states: ${task.state_space}
+    # state_dim: ${task.state_space.state_dim}
+    # state_types: ${task.state_space.state_types}
+    # state_bounds: ${task.state_space.state_bounds}
+    # state_mapping: ${task.state_space.state_mapping}
+  actions:
+    action_dim: ${task.action_space.actions.dim}
+    action_types: ${task.action_space.action_type}
+    action_bounds: ${task.action_space.actions.action_bounds}
+    action_mapping: ${task.action_space.actions.action_mapping}
+    action_pred_shape: ${task.action_space.action_pred.shape}
+    action_pred_format: ${task.action_space.action_pred.format}
+    action_execution_horizon: ${task.action_space.action_execution_horizon}
+    action_prediction_horizon: ${task.action_space.action_pred.action_prediction_horizon}
+  env:
+    name: ${task.environment.name}
+    ts: ${task.environment.ts}
+    max_episode_steps: ${task.environment.max_episode_steps}
+    fail_on_error: ${task.environment.fail_on_error}
+    fail_after_steps: ${task.environment.fail_after_steps}
+  obs:
+    observation_type: ${task.observation_space.observation_type}
+    observation_shape: ${task.observation_space.observation_shape}

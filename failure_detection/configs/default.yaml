@@ -1,0 +1,23 @@
+# Base pipeline configuration. The experiments are configs/pusht.yaml and configs/libero_plus.yaml
+# (python pipeline.py --config-name pusht); the pipeline recomposes this file per task internally.
+defaults:
+  - _self_
+  - eval: rnd_oe
+  - task: push_t
+  - results: base
+
+tasks: [push_t]
+suite_to_task_ids: {}
+rnd_models: []
+methods: [bayesian]
+
+# Logical combination of two detectors (not used in the paper)
+combine_methods: false
+combined_methods: {}
+
+train_rnd: true
+
+# For input verification
+available_tasks: [push_t, libero_10]
+implemented_methods: [rnd_oe, entropy, tc, logpzo, bayesian]
+available_rnd_models: [rnd_oe]

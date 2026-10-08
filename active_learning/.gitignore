@@ -1,0 +1,15 @@
+# Everything an experiment writes: checkpoints, rollouts, evaluations, caches, figures.
+/outputs/
+/plots/
+/logs/
+/wandb/
+/third_party/libero_plus/
+/paper_plots/*
+!/paper_plots/make.sh
+
+.env
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/

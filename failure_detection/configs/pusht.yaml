@@ -1,0 +1,39 @@
+# Failure detection on Push-T: the flow-matching policy ensembles pretrained on 50 demonstrations, one run
+# per two-member ensemble. Data root layout: <root>/push_t -> the ensemble's scored-rollout directory
+# (rollouts/{calibration,test}/*.pkl and demo_embeddings/); run_pusht.sh sets this up.
+#
+# Detectors: VFD (bayesian), ACE (entropy), STAC (tc), logpZO and RND-OE (rnd_oe). logpZO and RND-OE are
+# trained on the policy's training demonstrations (training_data: demos).
+defaults:
+  - _self_
+  - eval: bayesian
+  - task: push_t
+  - results: base
+
+tasks: [push_t]
+suite_to_task_ids: {}
+
+rnd_models: [rnd_oe]
+methods: [bayesian, entropy, tc, logpzo]
+
+combine_methods: false
+combined_methods: {}
+
+train_rnd: true
+
+# Thresholds are calibrated on the first 20 (sorted) successful calibration rollouts.
+max_calibration_rollouts: 20
+
+training_data: demos
+
+# VFD: one-way velocity-field disagreement at flow times {0.2, 0.4, 0.6, 0.8, 0.9}, B = 8 action samples.
+method_overrides:
+  bayesian:
+    scoring_metrics: [inter_vel_diff]
+    inter_vel_diff_eval_times: [0.2, 0.4, 0.6, 0.8, 0.9]
+    num_action_samples: 8
+    required_tensors: [ode_eval_times, velocities, ensemble_velocities, vel_diff_scaling]
+
+available_tasks: [push_t, libero_10]
+implemented_methods: [rnd_oe, entropy, tc, logpzo, bayesian]
+available_rnd_models: [rnd_oe]

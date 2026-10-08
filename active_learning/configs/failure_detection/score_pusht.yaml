@@ -1,0 +1,29 @@
+# Scores the recorded Push-T rollouts with the seed pair's two-member ensemble (VFD, both members).
+# sampler_ensemble_member_index: 0 marks the member that generated the rollouts. Paths are the s01
+# defaults; scripts/failure_detection/run_pusht.sh overrides them per seed pair.
+input_dir: outputs/fiper_rollout_recording/pusht_pre50_s01
+output_dir: outputs/fiper_rollout_scoring/pusht_pre50_s01
+allow_existing_output_dir: true
+
+dataset:
+  repo_id: lerobot/pusht
+
+env:
+  type: pusht
+
+fiper_rollout_scorer:
+  scores_by_method:
+    bayesian_laplace: []
+    bayesian_ensemble: [inter_vel_diff, inter_vel_diff_2way]
+    composed: []
+    composed_bayesian_laplace: []
+    composed_bayesian_ensemble: []
+  ensemble_model_paths:
+    - outputs/pretrain/fm_pusht/seed_0/checkpoints/last/pretrained_model
+    - outputs/pretrain/fm_pusht/seed_1/checkpoints/last/pretrained_model
+  sampler_ensemble_member_index: 0
+  terminal_vel_eval_times: [0.0]
+
+seed: 40118
+job_name: pusht_scoring
+save_videos: false
